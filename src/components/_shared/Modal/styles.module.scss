@@ -1,0 +1,12 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal {
+  width: 100%;
+
+  .content {
+    padding-top: 14px !important;
+  }
+}

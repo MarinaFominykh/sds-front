@@ -1,0 +1,28 @@
+@import "../../assets/styles/font-family.scss";
+@import "../../assets/styles/text-style.scss";
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/reset.scss";
+.header {
+  .toobar {
+    background-color: $blue;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .icon_burger {
+    color: #fff;
+  }
+
+  .user_info {
+    display: flex;
+    align-items: center;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+  }
+  .name {
+    margin-left: 16px;
+  }
+}

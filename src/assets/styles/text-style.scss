@@ -1,0 +1,26 @@
+@import "./font-family.scss";
+
+@mixin h1-regular {
+  font-family: $Roboto;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: normal;
+}
+@mixin p16-regular {
+  font-family: $Roboto;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: normal;
+}
+@mixin p12-regular {
+  font-family: $Roboto;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: normal;
+}
+@mixin p10-regular {
+  font-family: $Roboto;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: normal;
+}

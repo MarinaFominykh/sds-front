@@ -1,0 +1,23 @@
+@import "../../../assets/styles/font-family.scss";
+@import "../../../assets/styles/text-style.scss";
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/reset.scss";
+.add-job {
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.input-container {
+  @include fieldset;
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  flex-direction: column;
+}
+.button {
+  display: flex;
+  justify-content: flex-end;
+}

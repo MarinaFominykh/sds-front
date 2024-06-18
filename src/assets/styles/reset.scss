@@ -1,0 +1,31 @@
+@mixin indents {
+  padding: 0;
+  margin: 0;
+}
+
+@mixin input {
+  @include text;
+  @include indents;
+  display: block;
+  box-shadow: none;
+  outline: none;
+  border: none;
+}
+
+@mixin ul {
+  @include indents;
+  list-style: none;
+}
+
+@mixin button {
+  @include text;
+  @include indents;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+@mixin fieldset {
+  @include indents;
+  border: none;
+}

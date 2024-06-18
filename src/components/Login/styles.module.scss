@@ -1,0 +1,55 @@
+@import "../../assets/styles/font-family.scss";
+@import "../../assets/styles/text-style.scss";
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/reset.scss";
+.form {
+  max-width: 444px;
+  //padding: 44px;
+  width: 100%;
+  box-sizing: border-box;
+  //border: 1px red solid;
+}
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .title {
+    @include h1-regular;
+    color: $blue;
+    margin-bottom: 20px;
+  }
+  .subtitle {
+    @include p16-regular;
+    color: $blue;
+    margin-bottom: 12px;
+  }
+  .fields {
+    @include fieldset;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .btn-container {
+    @include fieldset;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .link {
+    @include p16-regular;
+    color: $blue;
+    text-decoration: none;
+  }
+}
+.error {
+  display: inline-block;
+  @include p12-regular;
+  color: red;
+  min-height: 16px;
+  min-width: 400px;
+}

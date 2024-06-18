@@ -1,0 +1,24 @@
+@import "../../../assets/styles/font-family.scss";
+@import "../../../assets/styles/text-style.scss";
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/reset.scss";
+
+.container {
+}
+.fields-container {
+  background-color: #ffff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.fields {
+  @include fieldset;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.head {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}

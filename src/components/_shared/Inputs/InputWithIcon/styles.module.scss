@@ -1,0 +1,13 @@
+@import "../../../../assets/styles/reset.scss";
+.input {
+  ///padding: 4px 12px;
+  input {
+    padding: 4px 12px;
+    box-sizing: border-box;
+  }
+  .button {
+    @include indents;
+    padding: 4px 12px;
+    box-sizing: border-box;
+  }
+}

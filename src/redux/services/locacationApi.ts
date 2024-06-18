@@ -1,0 +1,23 @@
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { ECOMMAND } from "@src/types/ECommand";
+import { createBodyQuery } from "@src/utils/functions";
+
+export const locationAPI = createApi({
+  reducerPath: "location",
+  baseQuery: fetchBaseQuery({
+    baseUrl: `${import.meta.env.VITE_BASE_API_URL}`,
+  }),
+  tagTypes: ["location"],
+  endpoints: (build) => ({
+    getAllLocation: build.query({
+      query: (args) => ({
+        url: "/api",
+        method: "POST",
+        body: createBodyQuery(ECOMMAND.GETGROUPS, args),
+      }),
+      providesTags: (result) => ["location"],
+    }),
+  }),
+});
+
+export const { useGetAllLocationQuery } = locationAPI;

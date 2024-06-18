@@ -1,0 +1,26 @@
+@import "../../../assets/styles/font-family.scss";
+@import "../../../assets/styles/text-style.scss";
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/reset.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  //padding-top: 14px;
+  margin-bottom: 18px;
+}
+.fields {
+  @include fieldset;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.info_input {
+  border-color: rgba(199, 188, 188, 0.8392156863);
+  border-radius: 4px;
+}
+.button {
+  display: flex;
+  justify-content: flex-end;
+}

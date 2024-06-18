@@ -1,0 +1,14 @@
+@import "./font-family.scss";
+@import "./text-style.scss";
+@import "./colors.scss";
+@import "./reset.scss";
+.title {
+  color: red;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: $black-text;
+  font-weight: 600;
+  margin-bottom: 8px;
+}

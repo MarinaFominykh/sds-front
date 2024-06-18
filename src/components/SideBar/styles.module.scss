@@ -1,0 +1,13 @@
+@import "../../assets/styles/font-family.scss";
+@import "../../assets/styles/text-style.scss";
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/reset.scss";
+.link {
+  display: flex;
+  text-decoration: none;
+  color: #000;
+}
+
+.icon {
+  color: $blue;
+}

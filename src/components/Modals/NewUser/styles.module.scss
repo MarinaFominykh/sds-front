@@ -1,0 +1,40 @@
+@import "../../../assets/styles/font-family.scss";
+@import "../../../assets/styles/text-style.scss";
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/reset.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  //padding-top: 14px;
+  margin-bottom: 18px;
+}
+.name_container,
+.contacts_container {
+  @include fieldset;
+  display: flex;
+  gap: 12px;
+}
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.info_input {
+  border-color: rgba(199, 188, 188, 0.8392156863);
+  border-radius: 4px;
+}
+.alert {
+  margin: 14px auto;
+}
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row !important;
+  margin: 8px;
+
+  .add-job-button {
+    font-size: 12px;
+  }
+}
