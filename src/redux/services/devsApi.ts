@@ -17,6 +17,22 @@ export const devAPI = createApi({
       }),
       providesTags: (result) => ["dev"],
     }),
+    getDevsByLocationId: build.query({
+      query: (args) => ({
+        url: "/api",
+        method: "POST",
+        body: createBodyQuery(ECOMMAND.GETDEVSBYLOCATIONID, args),
+      }),
+      providesTags: (result) => ["dev"],
+    }),
+    getAllLasSess: build.query({
+      query: (args) => ({
+        url: "/api",
+        method: "POST",
+        body: createBodyQuery(ECOMMAND.GETALLLASTSESS, args),
+      }),
+      providesTags: (result) => ["dev"],
+    }),
     getLasSess: build.query({
       query: (args) => ({
         url: "/api",
@@ -28,4 +44,9 @@ export const devAPI = createApi({
   }),
 });
 
-export const { useGetAllDevsQuery, useGetLasSessQuery } = devAPI;
+export const {
+  useGetAllDevsQuery,
+  useGetDevsByLocationIdQuery,
+  useGetAllLasSessQuery,
+  useGetLasSessQuery,
+} = devAPI;

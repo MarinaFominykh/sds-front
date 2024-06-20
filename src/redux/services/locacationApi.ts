@@ -17,7 +17,16 @@ export const locationAPI = createApi({
       }),
       providesTags: (result) => ["location"],
     }),
+    getLocationByParentId: build.query({
+      query: (args) => ({
+        url: "/api",
+        method: "POST",
+        body: createBodyQuery(ECOMMAND.GETGROUPSBYPARENTID, args),
+      }),
+      providesTags: (result) => ["location"],
+    }),
   }),
 });
 
-export const { useGetAllLocationQuery } = locationAPI;
+export const { useGetAllLocationQuery, useGetLocationByParentIdQuery } =
+  locationAPI;

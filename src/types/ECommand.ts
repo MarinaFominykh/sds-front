@@ -31,8 +31,10 @@ export enum ECOMMAND {
   GETUSERS = "get_AllUsers",
 
   //---------------------------------Группа устройств
-  // Получение групп   устройств
+  // Получение всех групп   устройств
   GETGROUPS = "get_AllDevsGroups",
+  // Получение группы устройств по id родительской группы
+  GETGROUPSBYPARENTID = "get_DevsGroups",
   // Добавление группы
   SETGROUP = "set_DevsGroups",
   //Редактирование группы
@@ -46,7 +48,7 @@ export enum ECOMMAND {
 
   //---------------------------------Устройства
   //Получение устройств по id группы
-  GETDEVS = "get_Devs",
+  GETDEVSBYLOCATIONID = "get_Devs",
   //Получение всех устройство
   GETALLDEVS = "get_AllDevs",
 
@@ -58,6 +60,8 @@ export enum ECOMMAND {
   //---------------------------------Сессии
   //Получение последней переданной сессии для отображение цвета маркера
   GETLASTSESS = "get_LastDevSess",
+  //Получение последних сессий всех устройств
+  GETALLLASTSESS = "get_AllLastDevSess",
   //Получение контрольной сессии установленной ранее администратором
   GETCONTOLSESS = "get_ControlDevSess",
   // Установка контрольной сессии

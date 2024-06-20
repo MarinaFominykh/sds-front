@@ -21,11 +21,7 @@ class Api {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
-    })
-      .then(this._checkResponse)
-      .then((dt) => {
-        console.log(dt);
-      });
+    }).then(this._checkResponse);
   }
 }
 

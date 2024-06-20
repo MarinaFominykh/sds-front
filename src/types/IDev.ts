@@ -7,8 +7,9 @@ export interface IDev {
   longitude: string;
   deleted: boolean;
   info: string;
-  perios_sess: string;
+  period_sess: string;
   sensors: ISensor[];
+  time: Date | undefined;
 }
 
 interface ISensor {
