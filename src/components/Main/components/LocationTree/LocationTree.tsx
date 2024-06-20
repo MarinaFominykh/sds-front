@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 
 import { LocationTreeView } from "./LocationTreeView";
-
+import { Alert } from "@mui/material";
 import { useGetAllLocationQuery } from "@src/redux/services/locacationApi";
 import {
   useGetAllDevsQuery,
@@ -16,7 +16,7 @@ import { ISession } from "@src/types/ISession";
 
 export const LocationTree = () => {
   const auth = useAuth();
-  const { data: locs } = useGetAllLocationQuery({});
+  const { data: locs, isLoading, isError } = useGetAllLocationQuery({});
   const { data: devs } = useGetAllDevsQuery({});
   const { data: lastSessions } = useGetAllLasSessQuery({});
   const [isAdmin, setIsAdmin] = useState(false);
@@ -109,10 +109,17 @@ export const LocationTree = () => {
   );
 
   return (
-    <LocationTreeView
-      // TODO: проверить под пользователем, у которого нет прав редактирования
-      locations={isAdmin ? locations : filteredLocations}
-      handleClick={handleSelectLocation}
-    />
+    <>
+      {isError ? (
+        <Alert severity="error">Произошла ошибка при загрузке устройств</Alert>
+      ) : (
+        <LocationTreeView
+          // TODO: проверить под пользователем, у которого нет прав редактирования
+          locations={isAdmin ? locations : filteredLocations}
+          handleClick={handleSelectLocation}
+          isLoading={isLoading}
+        />
+      )}
+    </>
   );
 };

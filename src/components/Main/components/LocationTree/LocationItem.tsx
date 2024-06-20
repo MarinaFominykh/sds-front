@@ -7,11 +7,17 @@ import { ILocation } from "@src/types/ILocation";
 import CrisisAlertIcon from "@mui/icons-material/CrisisAlert";
 import { IDev } from "@src/types/IDev";
 
+import { useStyles } from "@hooks/useStyles";
+
+import styles from "./styles.module.scss";
+
 interface Props {
   location: ILocation;
+  isLoading: boolean;
 }
 
-export const LocationItem: FC<Props> = ({ location }) => {
+export const LocationItem: FC<Props> = ({ location, isLoading }) => {
+  const cx = useStyles(styles);
   const getIcon = () => {
     return location?.devs?.length !== 0 ? FolderIcon : FolderZipIcon;
   };
@@ -47,37 +53,36 @@ export const LocationItem: FC<Props> = ({ location }) => {
   };
 
   return (
-    <>
-      <TreeItem
-        itemId={location.id}
-        label={location.g_name}
-        slots={{
-          expandIcon: getIcon(),
-          collapseIcon: getIcon(),
-          endIcon: getIcon(),
-        }}
-        sx={{
-          color: "#222",
-          fontSize: "14px",
-          "& .MuiSvgIcon-root": {
-            color: `${
-              location.deleted
-                ? "#808080"
-                : location?.devs?.length !== 0
-                ? "#FFE2C0"
-                : "#FFAD4E"
-            }`,
-          },
-        }}
-      >
-        {location.subLocations?.length !== 0 && (
-          <>
-            {location.subLocations?.map((item) => (
-              <LocationItem key={item.id} location={item} />
-            ))}
-          </>
-        )}
-        {/* {devs?.map((dev) => {
+    <TreeItem
+      itemId={location.id}
+      label={location.g_name}
+      slots={{
+        expandIcon: getIcon(),
+        collapseIcon: getIcon(),
+        endIcon: getIcon(),
+      }}
+      sx={{
+        color: "#222",
+        fontSize: "14px",
+        "& .MuiSvgIcon-root": {
+          color: `${
+            location.deleted
+              ? "#808080"
+              : location?.devs?.length !== 0
+              ? "#FFE2C0"
+              : "#FFAD4E"
+          }`,
+        },
+      }}
+    >
+      {location.subLocations?.length !== 0 && (
+        <>
+          {location.subLocations?.map((item) => (
+            <LocationItem key={item.id} location={item} isLoading={isLoading} />
+          ))}
+        </>
+      )}
+      {/* {devs?.map((dev) => {
           return (
             <TreeItem
               key={dev.id}
@@ -96,26 +101,25 @@ export const LocationItem: FC<Props> = ({ location }) => {
             />
           );
         })} */}
-        {location?.devs?.map((dev) => {
-          return (
-            <TreeItem
-              key={dev.id}
-              itemId={`dev_${dev.id}`}
-              label={dev.number}
-              slots={{
-                endIcon: CrisisAlertIcon,
-              }}
-              sx={{
-                color: `${dev.time ? "#222" : "#EA4335"}`,
-                fontSize: "14px",
-                "& .MuiSvgIcon-root": {
-                  color: getColorIcon(dev),
-                },
-              }}
-            />
-          );
-        })}
-      </TreeItem>
-    </>
+      {location?.devs?.map((dev) => {
+        return (
+          <TreeItem
+            key={dev.id}
+            itemId={`dev_${dev.id}`}
+            label={dev.number}
+            slots={{
+              endIcon: CrisisAlertIcon,
+            }}
+            sx={{
+              color: `${dev.time ? "#222" : "#EA4335"}`,
+              fontSize: "14px",
+              "& .MuiSvgIcon-root": {
+                color: getColorIcon(dev),
+              },
+            }}
+          />
+        );
+      })}
+    </TreeItem>
   );
 };
