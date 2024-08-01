@@ -1,0 +1,61 @@
+@import "../../../../assets/styles/font-family.scss";
+@import "../../../../assets/styles/text-style.scss";
+@import "../../../../assets/styles/colors.scss";
+@import "../../../../assets/styles/reset.scss";
+
+.container {
+}
+.fields-container {
+  background-color: #ffff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.fields {
+  @include fieldset;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.head {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+.link-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.57;
+  letter-spacing: 0.00714em;
+  color: #1976d2;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

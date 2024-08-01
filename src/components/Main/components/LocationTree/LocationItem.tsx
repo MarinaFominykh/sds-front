@@ -6,6 +6,7 @@ import FolderZipIcon from "@mui/icons-material/FolderZip";
 import { ILocation } from "@src/types/ILocation";
 import CrisisAlertIcon from "@mui/icons-material/CrisisAlert";
 import { IDev } from "@src/types/IDev";
+import { Link } from "react-router-dom";
 
 import { useStyles } from "@hooks/useStyles";
 
@@ -21,7 +22,10 @@ export const LocationItem: FC<Props> = ({ location, isLoading }) => {
   const getIcon = () => {
     return location?.devs?.length !== 0 ? FolderIcon : FolderZipIcon;
   };
-  const getColorIcon = (dev: IDev) => {
+  const getColorFolderIcon = () => {
+    return location?.subLocations?.length !== 0 ? "222" : "#FFE2C0";
+  };
+  const getColorDevIcon = (dev: IDev) => {
     const dateSess = moment(dev.time);
     const date = moment(new Date());
     const diff = date.diff(dateSess, "days");
@@ -54,7 +58,7 @@ export const LocationItem: FC<Props> = ({ location, isLoading }) => {
 
   return (
     <TreeItem
-      itemId={location.id}
+      itemId={location.id || ""}
       label={location.g_name}
       slots={{
         expandIcon: getIcon(),
@@ -63,7 +67,11 @@ export const LocationItem: FC<Props> = ({ location, isLoading }) => {
       }}
       sx={{
         color: "#222",
+
         fontSize: "14px",
+        "& .MuiTreeItem-content": {
+          padding: "0px",
+        },
         "& .MuiSvgIcon-root": {
           color: `${
             location.deleted
@@ -82,7 +90,9 @@ export const LocationItem: FC<Props> = ({ location, isLoading }) => {
           ))}
         </>
       )}
-      {/* {devs?.map((dev) => {
+
+      <>
+        {location?.devs?.map((dev) => {
           return (
             <TreeItem
               key={dev.id}
@@ -92,34 +102,19 @@ export const LocationItem: FC<Props> = ({ location, isLoading }) => {
                 endIcon: CrisisAlertIcon,
               }}
               sx={{
-                color: "#000",
+                color: `${
+                  dev.deleted ? "#808080" : dev.time ? "#222" : "#EA4335"
+                }`,
+                // `${dev.time ? "#222" : "#EA4335"}`,
                 fontSize: "14px",
                 "& .MuiSvgIcon-root": {
-                  color: `${dev.deleted ? "#808080" : "#0FA958"}`,
+                  color: getColorDevIcon(dev),
                 },
               }}
             />
           );
-        })} */}
-      {location?.devs?.map((dev) => {
-        return (
-          <TreeItem
-            key={dev.id}
-            itemId={`dev_${dev.id}`}
-            label={dev.number}
-            slots={{
-              endIcon: CrisisAlertIcon,
-            }}
-            sx={{
-              color: `${dev.time ? "#222" : "#EA4335"}`,
-              fontSize: "14px",
-              "& .MuiSvgIcon-root": {
-                color: getColorIcon(dev),
-              },
-            }}
-          />
-        );
-      })}
+        })}
+      </>
     </TreeItem>
   );
 };

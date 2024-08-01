@@ -8,6 +8,7 @@ import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";
 interface Props {
   name: string;
+  label: string;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   defaultChecked?: boolean;
   checked?: boolean;
@@ -16,6 +17,7 @@ interface Props {
 export const Switch: FC<Props> = ({
   handleChange,
   name,
+  label,
   defaultChecked,
   checked,
 }) => {
@@ -24,7 +26,7 @@ export const Switch: FC<Props> = ({
     <FormGroup className={cx("switch-container")}>
       <FormControlLabel
         className={cx("switch-label")}
-        label="Разрешить редактирование"
+        label={label}
         control={
           <SwitchMui
             name={name}

@@ -15,6 +15,7 @@ import {
   Button as ButtonMui,
   Stack,
 } from "@mui/material";
+import { phoneRegex, latRegex } from "@src/utils/regexp";
 import { InputText } from "@components/_shared/Inputs/InputText";
 import TelInput from "@components/_shared/Inputs/TelInput/TelInput";
 import { RadioButton } from "@components/_shared/RadioButton";
@@ -31,7 +32,6 @@ import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";
 
 interface Props {
-  checkValue: string;
   handleCheck: (event: ChangeEvent<HTMLInputElement>) => void;
   handleChange: (
     event: ChangeEvent<
@@ -39,9 +39,12 @@ interface Props {
     >
   ) => void;
   handleSelectChange: (event: SelectChangeEvent) => void;
-  handleChangeTelInput: (event: {
-    target: { name: string; value: string };
-  }) => void;
+  // handleChangeMackInput: (
+  //   event: {
+  //     target: { name: string; value: string };
+  //   },
+  //   regexp: RegExp
+  // ) => void;
   handleCloseSelect: (
     event: SyntheticEvent<Element, Event>,
     name: string
@@ -55,7 +58,7 @@ interface Props {
   handleChecked: (event: ChangeEvent<HTMLInputElement>) => void;
   orgs: IOrg[];
   jobs: IJob[];
-  values: { [name: string]: string };
+  values: FormValues;
   errors: { [name: string]: string };
   setValues: Dispatch<SetStateAction<FormValues>>;
   setErrors: Dispatch<SetStateAction<FormErrors>>;
@@ -67,21 +70,15 @@ interface Props {
 }
 
 export const NewUserView: FC<Props> = ({
-  checkValue,
-  handleCheck,
   handleChange,
   handleSelectChange,
-  handleChangeTelInput,
   handleCloseSelect,
-  handleBlur,
   handleOpenModal,
   handleChecked,
   orgs,
   jobs,
   values,
   errors,
-  setValues,
-  setErrors,
   isValid,
   message,
   isSuccessSave,
@@ -123,7 +120,7 @@ export const NewUserView: FC<Props> = ({
         <fieldset className={cx("contacts_container")}>
           {/* <InputText
             label="Телефон"
-            onChange={handleChangeTelInput}
+            onChange={(e) => handleChangeMackInput(e, phoneRegex)}
             onBlur={handleBlur}
             name="telephone"
             value={values.telephone || ""}
@@ -152,10 +149,11 @@ export const NewUserView: FC<Props> = ({
           inputProps={{
             name: "id_org",
           }}
-          value={values.id_org || ""}
+          value={(values.id_org as string) || ""}
           error={Boolean(errors.id_org)}
           helperText={errors.id_org}
         >
+          <MenuItem value=""></MenuItem>
           {orgs?.map((org) => (
             <MenuItem key={org.id} value={org.id}>
               {org.full_name}
@@ -171,7 +169,7 @@ export const NewUserView: FC<Props> = ({
           inputProps={{
             name: "id_jobs",
           }}
-          value={values.id_jobs || ""}
+          value={(values.id_jobs as string) || ""}
           error={Boolean(errors.id_jobs)}
           helperText={errors.id_jobs}
         >
@@ -217,7 +215,11 @@ export const NewUserView: FC<Props> = ({
           error={Boolean(errors.repeat)}
           helperText={errors.repeat}
         />
-        <Switch name="user_w" handleChange={handleChecked} />
+        <Switch
+          name="user_w"
+          label="Разрешить редактировние"
+          handleChange={handleChecked}
+        />
 
         <TextareaAutosize
           name="info"

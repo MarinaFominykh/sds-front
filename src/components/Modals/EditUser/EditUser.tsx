@@ -15,7 +15,6 @@ import {
 import { passwordRegex } from "@src/utils/regexp";
 
 import { IJob } from "@src/types/IJob";
-import { set } from "react-hook-form";
 
 interface Props {
   handleClose: () => void;
@@ -63,7 +62,7 @@ export const EditUser: FC<Props> = ({ handleClose }) => {
     if (!family || !name || !email || !login) {
       setMessage(INVALID_FORM);
     } else if (values.password) {
-      if (!passwordRegex.test(values.password)) {
+      if (!passwordRegex.test(String(values.password))) {
         setMessage(INVALID_PASSWORD_ERROR);
       } else if (values.password !== values.repeat) {
         setMessage(PASSWORDS_NOT_MATCH);

@@ -1,17 +1,24 @@
 import { FC, ReactNode, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation, Outlet } from "react-router-dom";
 import { useAuth } from "@hooks/useAuth";
 
 interface Props {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export const ProtectedRoute: FC<Props> = ({ children }) => {
+  const location = useLocation();
   const auth = useAuth();
-
   if (!auth || !auth.user) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
-
   return children;
 };
+
+//  const auth = useAuth();
+
+//  if (!auth || !auth.user) {
+//    return <Navigate to="/login" replace />;
+//  }
+
+//  return children;

@@ -1,0 +1,11 @@
+@import "../../../../../../assets/styles/font-family.scss";
+@import "../../../../../../assets/styles/text-style.scss";
+@import "../../../../../../assets/styles/colors.scss";
+@import "../../../../../../assets/styles/reset.scss";
+
+.notfound {
+  font-family: $Roboto;
+  font-size: 16px;
+  color: rgb(38, 107, 241);
+  padding: 24px;
+}

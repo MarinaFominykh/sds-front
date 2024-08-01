@@ -25,7 +25,7 @@ interface Props {
     event: SyntheticEvent<Element, Event>,
     name: string
   ) => void;
-  values: { [name: string]: string };
+  values: FormValues;
   errors: { [name: string]: string };
   orgs: IOrg[];
   isValid: boolean;
@@ -61,7 +61,7 @@ export const NewJobView: FC<Props> = ({
           inputProps={{
             name: "id_org",
           }}
-          value={values.id_org || ""}
+          value={String(values.id_org) || ""}
           error={Boolean(errors.id_org)}
           helperText={errors.id_org}
         >

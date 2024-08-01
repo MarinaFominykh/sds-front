@@ -4,7 +4,7 @@ export interface IResponse {
   cmd: string /* команда запроса */;
   error: string | null /* ошибка */;
   //#TODO: Добавить тип:
-  data: IUser[] /* строки из запроса */;
+  data: any /* строки из запроса */;
   user_sess_code: string /* дополнительный код ответа */;
 }
 

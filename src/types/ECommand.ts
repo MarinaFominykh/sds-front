@@ -44,16 +44,22 @@ export enum ECOMMAND {
   //Получение схемы, если она имеется
   GETSCHEME = "get_SchemeSvg",
   //Добавление/обновление схемы SVG группы
-  CHANGESCHEME = "set_SchemeSvg",
+  SETSCHEME = "set_SchemeSvg",
 
   //---------------------------------Устройства
   //Получение устройств по id группы
   GETDEVSBYLOCATIONID = "get_Devs",
   //Получение всех устройство
   GETALLDEVS = "get_AllDevs",
+  //Получение поверочного интервала устройства
+  GETVERIFRANGE = "get_DevVerif",
+  //Установка поверочного интервала устройства
+  SETVERIFRANGE = "set_DevVerif",
 
+  //Добавление устройства
+  SETDEV = "set_Devs",
   //Добавление устройств
-  SETDEVS = "set_Devs",
+  SETDEVS = "set_manyDevs",
   //Редактирование устройств
   CHANGEDEV = "set_ChangeDevs",
 
@@ -63,9 +69,11 @@ export enum ECOMMAND {
   //Получение последних сессий всех устройств
   GETALLLASTSESS = "get_AllLastDevSess",
   //Получение контрольной сессии установленной ранее администратором
-  GETCONTOLSESS = "get_ControlDevSess",
+  GETCONTROLSESS = "get_ControlDevSess",
   // Установка контрольной сессии
   SETCONTROLSESS = "set_ControlDevSess",
   //Удаление контрольной сессии
   DELETECONTROLSESS = "set_deleteControlDevSess",
+  // Получений сессий устройства за определенный период
+  GETSELECTEDDEVSESSIONS = "get_DevSess",
 }

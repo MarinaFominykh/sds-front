@@ -1,0 +1,1 @@
+export { InfoSticker } from "./InfoSticker";

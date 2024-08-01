@@ -75,3 +75,10 @@ export const sideBarLinksData = [
     icon: ArrowCircleDownOutlinedIcon,
   },
 ];
+
+export const periodOptionsData = [
+  { id: "1", label: "Один раз в день", value: "1" },
+  { id: "2", label: "Один раз в 7 дней", value: "7" },
+  { id: "3", label: "Один раз в 14 дней", value: "14" },
+  { id: "4", label: "Один раз в 30(31) дней", value: "31" },
+];

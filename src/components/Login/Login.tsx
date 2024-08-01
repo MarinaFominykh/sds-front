@@ -49,6 +49,7 @@ export const Login = () => {
         auth?.login(response);
         dispatch(setUser(response.data.data?.[0]));
         dispatch(setCode(response.data.user_sess_code));
+        dispatch(authChecked(true));
       }
     });
   };

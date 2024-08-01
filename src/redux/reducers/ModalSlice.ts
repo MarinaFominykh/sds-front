@@ -3,10 +3,12 @@ import { eVariantModal } from "@src/types/EvariantModal";
 interface ModalState {
   title: string;
   variant: eVariantModal | null;
+  subVariant?: eVariantModal | null;
 }
 const initialState: ModalState = {
   title: "",
   variant: null,
+  subVariant: null,
 };
 
 export const modalSlice = createSlice({
@@ -17,9 +19,12 @@ export const modalSlice = createSlice({
       state.variant = action.payload.variant;
       state.title = action.payload.title;
     },
+    setSubVariant: (state, action: PayloadAction<any>) => {
+      state.subVariant = action.payload.subVariant;
+    },
   },
 });
 
-export const { setVariant } = modalSlice.actions;
+export const { setVariant, setSubVariant } = modalSlice.actions;
 
 export default modalSlice.reducer;

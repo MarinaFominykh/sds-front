@@ -1,0 +1,21 @@
+@import "../../../../../../assets/styles/font-family.scss";
+@import "../../../../../../assets/styles/text-style.scss";
+@import "../../../../../../assets/styles/colors.scss";
+@import "../../../../../../assets/styles/reset.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 32px;
+}
+.fields {
+  @include fieldset;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  div {
+    margin: 0;
+  }
+}

@@ -1,15 +1,19 @@
 import { IDev } from "./IDev";
+import { IOrg } from "./IOrg";
 
 export interface ILocation {
-  id: string;
-  parent_id: string;
-  g_name: string;
-  latitude: string;
-  longitude: string;
-  ord_num?: number;
-  org_id: string;
-  g_info: string;
-  deleted: boolean;
+  id?: string | undefined;
+  parent_id?: string | undefined;
+  g_name?: string | undefined;
+  latitude?: string | undefined;
+  longitude?: string | undefined;
+  ord_num?: number | undefined;
+  org_id?: string | undefined;
+  id_org?: string | undefined;
+  g_info?: string | undefined;
+  deleted?: boolean | undefined;
   subLocations?: ILocation[];
   devs?: IDev[];
+  org?: IOrg;
+  svg?: string | undefined;
 }

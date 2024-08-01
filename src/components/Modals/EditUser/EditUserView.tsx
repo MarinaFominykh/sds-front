@@ -11,7 +11,7 @@ import {
 import { InputText } from "@components/_shared/Inputs/InputText";
 import { Button } from "@components/_shared/Button";
 import { Select } from "@components/_shared/Inputs/Select";
-import { Switch } from "@components/_shared/Switch";
+
 import { RadioButton } from "@components/_shared/RadioButton";
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";

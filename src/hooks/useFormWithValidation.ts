@@ -7,10 +7,9 @@ import {
   useEffect,
 } from "react";
 import { SelectChangeEvent } from "@mui/material";
-import { set } from "react-hook-form";
-import { phoneRegex } from "@src/utils/regexp";
+import { phoneRegex, latRegex } from "@src/utils/regexp";
 export interface FormValues {
-  [key: string]: string;
+  [key: string]: string | number | boolean;
 }
 export interface FormErrors {
   [key: string]: string;
@@ -25,7 +24,8 @@ export const useFormValidation = () => {
   const handleChange = (
     event: ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    >,
+    regexp?: RegExp
   ) => {
     const target = event.target;
     const name = target.name;
@@ -43,22 +43,34 @@ export const useFormValidation = () => {
     target.validationMessage
       ? setIsInValidInput({ ...isInValidInput, [name]: true })
       : setIsInValidInput({ ...isInValidInput, [name]: false });
+    if (regexp) {
+      if (!regexp.test(value)) {
+        setErrors({
+          ...errors,
+          [name]: "Введите данные в указанном формате",
+        });
+      } else setErrors({ ...errors, [name]: "" });
+    }
   };
 
   const handleSelectChange = (event: SelectChangeEvent) => {
     const { name, value } = event.target;
+
     setValues({ ...values, [name]: value });
   };
 
-  const handleChangeTelInput = (event: {
-    target: { name: string; value: string };
-  }) => {
-    const { name, value } = event.target;
-    setValues({ ...values, [name]: value });
-    if (!phoneRegex.test(value)) {
-      setErrors({ ...errors, [name]: "Введите данные в указанном формате" });
-    } else setErrors({ ...errors, [name]: "" });
-  };
+  // const handleChangeMackInput = (
+  //   event: {
+  //     target: { name: string; value: string };
+  //   },
+  //   regexp: RegExp
+  // ) => {
+  //   const { name, value } = event.target;
+  //   setValues({ ...values, [name]: value });
+  //   if (!regexp.test(value)) {
+  //     setErrors({ ...errors, [name]: "Введите данные в указанном формате" });
+  //   } else setErrors({ ...errors, [name]: "" });
+  // };
 
   const handleBlur = (
     event: ChangeEvent<
@@ -71,7 +83,6 @@ export const useFormValidation = () => {
   };
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = event.target;
-
     setValues({ ...values, [name]: checked.toString() });
   };
   const handleCloseSelect = (
@@ -108,9 +119,9 @@ export const useFormValidation = () => {
     values,
     setValues,
     setErrors,
+    setIsValid,
     handleChange,
     handleSelectChange,
-    handleChangeTelInput,
     handleCheckboxChange,
     handleCloseSelect,
     handleBlur,

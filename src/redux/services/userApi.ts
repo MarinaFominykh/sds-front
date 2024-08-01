@@ -3,6 +3,7 @@ import { ECOMMAND } from "@src/types/ECommand";
 import { createBodyQuery } from "@src/utils/functions";
 import { IUser, IUserCreate } from "@src/types/IUser";
 import { IUserUpdate } from "@src/types/IUser";
+import { FormValues } from "@hooks/useFormWithValidation";
 
 export const userAPI = createApi({
   reducerPath: "user",
@@ -19,7 +20,7 @@ export const userAPI = createApi({
       }),
       providesTags: (result) => ["User"],
     }),
-    createUser: build.mutation<IUser, IUserCreate>({
+    createUser: build.mutation<IUser, FormValues>({
       query: (args) => ({
         url: "/api",
         method: "POST",
@@ -28,7 +29,7 @@ export const userAPI = createApi({
       invalidatesTags: (result) => ["User"],
     }),
 
-    editUser: build.mutation<IUser, IUserUpdate>({
+    editUser: build.mutation<IUser, FormValues>({
       query: (args) => ({
         url: "/api",
         method: "POST",

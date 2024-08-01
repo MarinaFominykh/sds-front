@@ -13,3 +13,5 @@ export const INVALID_PASSWORD_ERROR =
 export const DOUBLE_NAME_ORG_ERROR =
   "Организация с таким названием уже существует";
 export const DOUBLE_INN_ERROR = "Организация с таким ИНН уже существует";
+export const DOUBLE_NUMBER_ERROR = "Устройство с таким номером уже существует";
+export const INVALID_TYPE_ERROR = "Формат загруженного файла не поддерживается";

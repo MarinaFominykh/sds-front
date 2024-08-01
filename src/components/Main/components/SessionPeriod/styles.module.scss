@@ -1,0 +1,15 @@
+@import "../../../../assets/styles/font-family.scss";
+@import "../../../../assets/styles/text-style.scss";
+@import "../../../../assets/styles/colors.scss";
+@import "../../../../assets/styles/reset.scss";
+.container {
+  background-color: #fff;
+
+  padding: 12px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  * {
+    box-sizing: border-box;
+  }
+}

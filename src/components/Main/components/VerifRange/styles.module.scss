@@ -1,0 +1,35 @@
+@import "../../../../assets/styles/font-family.scss";
+@import "../../../../assets/styles/text-style.scss";
+@import "../../../../assets/styles/colors.scss";
+@import "../../../../assets/styles/reset.scss";
+.container {
+  * {
+    box-sizing: border-box;
+  }
+}
+.title {
+  font-family: $Roboto;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.content {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 4px;
+  display: flex;
+  padding: 12px;
+  flex-direction: column;
+}
+.text-wrapper {
+  display: flex;
+  padding-bottom: 12px;
+  align-items: center;
+  font-size: 15px;
+  //   gap: 12px;
+}
+.text {
+  font-family: $Roboto;
+  color: #808080;
+  font-size: 12px;
+  margin-left: 8px;
+}

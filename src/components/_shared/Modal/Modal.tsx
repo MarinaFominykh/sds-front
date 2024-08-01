@@ -14,6 +14,17 @@ import { NewUser } from "@components/Modals/NewUser";
 import { NewOrg } from "@components/Modals/NewOrg";
 import { NewJob } from "@components/Modals/NewJob";
 import { EditUser } from "@components/Modals/EditUser";
+import { NewLocation } from "@components/Modals/NewLocation";
+import { NewSubLocation } from "@components/Modals/NewSubLocation";
+import { EditLocation } from "@components/Modals/EditLocation";
+import { MoveLocatiton } from "@components/Modals/MoveLocation";
+import { NewScheme } from "@components/Modals/NewScheme";
+import { NewDev } from "@components/Modals/NewDev";
+import { NewDevs } from "@components/Modals/NewDevs";
+import { EditDev } from "@components/Modals/EditDev";
+import { MoveDevice } from "@components/Modals/MoveDevice";
+import { NewVerifRange } from "@components/Modals/NewVerifRange/NewVerifRange";
+import { DeleteControlSession } from "@components/Modals/DeleteControlSession";
 import { CloseButton } from "../CloseButton";
 import { Typography } from "../Typography";
 import styles from "./styles.module.scss";
@@ -23,7 +34,9 @@ interface Props {
 }
 export const Modal: FC<Props> = ({ open, handleClose }) => {
   const cx = useStyles(styles);
-  const { variant, title } = useAppSelector((state) => state.modalSlice);
+  const { variant, title, subVariant } = useAppSelector(
+    (state) => state.modalSlice
+  );
   const variantModalRender = () => {
     if (variant === eVariantModal.newUser) {
       return <NewUser handleClose={handleClose} />;
@@ -33,6 +46,28 @@ export const Modal: FC<Props> = ({ open, handleClose }) => {
       return <NewJob handleClose={handleClose} />;
     } else if (variant === eVariantModal.editUser) {
       return <EditUser handleClose={handleClose} />;
+    } else if (variant === eVariantModal.newLocation) {
+      return <NewLocation handleClose={handleClose} />;
+    } else if (variant === eVariantModal.editLocation) {
+      return <EditLocation handleClose={handleClose} />;
+    } else if (variant === eVariantModal.moveLocation) {
+      return <MoveLocatiton handleClose={handleClose} />;
+    } else if (variant === eVariantModal.addSubLocation) {
+      return <NewSubLocation handleClose={handleClose} />;
+    } else if (variant === eVariantModal.newScheme) {
+      return <NewScheme handleClose={handleClose} />;
+    } else if (variant === eVariantModal.newDev) {
+      return <NewDev handleClose={handleClose} />;
+    } else if (variant === eVariantModal.newDevs) {
+      return <NewDevs handleClose={handleClose} />;
+    } else if (variant === eVariantModal.editDev) {
+      return <EditDev handleClose={handleClose} />;
+    } else if (variant === eVariantModal.moveDev) {
+      return <MoveDevice handleClose={handleClose} />;
+    } else if (variant === eVariantModal.newVerivRange) {
+      return <NewVerifRange handleClose={handleClose} />;
+    } else if (variant === eVariantModal.deleteControlSession) {
+      return <DeleteControlSession handleClose={handleClose} />;
     }
   };
 

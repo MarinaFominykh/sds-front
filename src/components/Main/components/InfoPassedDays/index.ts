@@ -1,0 +1,1 @@
+export { InfoPassedDays } from "./InfoPassedDays";

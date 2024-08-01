@@ -1,0 +1,26 @@
+@import "../../../assets/styles/font-family.scss";
+@import "../../../assets/styles/text-style.scss";
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/reset.scss";
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal {
+  width: 100%;
+
+  .content {
+    padding-top: 14px !important;
+  }
+}
+.fields {
+  @include fieldset;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.button {
+  display: flex;
+  justify-content: flex-end;
+}

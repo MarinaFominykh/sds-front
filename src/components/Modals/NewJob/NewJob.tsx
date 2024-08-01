@@ -9,7 +9,7 @@ import { NewJobView } from "./NewJobView";
 import { SAVE_SUCCESS, SAVE_ERROR } from "@src/utils/messages";
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";
-import { set } from "react-hook-form";
+
 import { IJob } from "@src/types/IJob";
 
 interface Props {
@@ -25,7 +25,7 @@ export const NewJob: FC<Props> = ({ handleClose }) => {
     errors,
     handleChange,
     handleSelectChange,
-    handleChangeTelInput,
+
     handleCheckboxChange,
     handleCloseSelect,
     handleBlur,

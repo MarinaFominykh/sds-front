@@ -1,3 +1,4 @@
+import { ISession } from "./ISession";
 export interface IDev {
   id: string;
   group_dev_id: string;
@@ -8,11 +9,16 @@ export interface IDev {
   deleted: boolean;
   info: string;
   period_sess: string;
-  sensors: ISensor[];
+  sensors: {
+    s: ISensor[];
+  };
   time: Date | undefined;
+  control_sess?: ISession;
+  last_sess?: ISession;
+  selectedSession?: ISession;
 }
 
-interface ISensor {
+export interface ISensor {
   depth: number;
   value: number;
 }

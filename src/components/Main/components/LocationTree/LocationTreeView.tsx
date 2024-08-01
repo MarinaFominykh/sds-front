@@ -11,7 +11,7 @@ import styles from "./styles.module.scss";
 
 interface Props {
   locations: ILocation[];
-  handleClick: (id: string | null) => void;
+  handleClick: (id: string) => void;
   isLoading: boolean;
 }
 export const LocationTreeView: FC<Props> = (props) => {
@@ -25,10 +25,11 @@ export const LocationTreeView: FC<Props> = (props) => {
       ) : (
         <SimpleTreeView
           className={cx("tree")}
-          onSelectedItemsChange={(e, id) => handleClick(id)}
+          onSelectedItemsChange={(e, id) => handleClick(id ?? "")}
         >
           {locations?.map((location) => (
             <LocationItem
+              {...other}
               key={location.id}
               location={location}
               isLoading={isLoading}

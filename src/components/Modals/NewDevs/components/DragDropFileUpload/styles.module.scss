@@ -1,0 +1,56 @@
+.paper {
+  padding: 20;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.devSheme-block {
+  color: #000;
+  background-color: #e5f4ff;
+  transition: all 1s;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.devSheme-info {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.devSheme-name,
+.devSheme-size {
+  padding: 0 3px;
+}
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -12px;
+  margin-left: -12px;
+}
+.preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.alert {
+  margin: 14px auto;
+}

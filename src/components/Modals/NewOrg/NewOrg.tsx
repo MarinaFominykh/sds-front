@@ -36,10 +36,10 @@ export const NewOrg: FC<Props> = ({ handleClose }) => {
 
   const validationFormValues = (event: FormEvent) => {
     event.preventDefault();
-    const isDoubleInn = isInnInArray(orgs.data, values.inn, "inn");
+    const isDoubleInn = isInnInArray(orgs.data, String(values.inn), "inn");
     const isDoubleNameOrg = isInnInArray(
       orgs.data,
-      values.full_name,
+      String(values.full_name),
       "full_name"
     );
     if (isDoubleInn) {

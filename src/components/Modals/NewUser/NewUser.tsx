@@ -38,7 +38,6 @@ export const NewUser: FC<Props> = ({ handleClose }) => {
     errors,
     handleChange,
     handleSelectChange,
-    handleChangeTelInput,
     handleCheckboxChange,
     handleCloseSelect,
     handleBlur,
@@ -89,7 +88,7 @@ export const NewUser: FC<Props> = ({ handleClose }) => {
     }
 
     if (isValidForm) {
-      if (!passwordRegex.test(values.password)) {
+      if (!passwordRegex.test(String(values.password))) {
         setMessage(INVALID_PASSWORD_ERROR);
       } else if (values.password !== values.repeat) {
         setMessage(PASSWORDS_NOT_MATCH);
@@ -109,7 +108,7 @@ export const NewUser: FC<Props> = ({ handleClose }) => {
 
   const createNewUser = () => {
     const args = generateArgs();
-    createUser(args as IUserCreate);
+    createUser(args);
   };
 
   useEffect(() => {
@@ -134,8 +133,8 @@ export const NewUser: FC<Props> = ({ handleClose }) => {
         handleChange={handleChange}
         handleCheck={handleCheckboxChange}
         handleSelectChange={handleSelectChange}
-        handleChangeTelInput={handleChangeTelInput}
-        checkValue={values.addUserCheckBox}
+        //handleChangeMackInput={handleChangeMackInput}
+
         handleCloseSelect={handleCloseSelect}
         handleBlur={handleBlur}
         handleOpenModal={handleOpenModalAddJob}

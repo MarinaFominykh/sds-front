@@ -33,8 +33,10 @@ interface Props {
   variant?: "outlined" | "filled" | "standard";
   fullWidth?: boolean;
   disabled?: boolean;
+  multiline?: boolean;
+  rows?: number;
 
-  type?: "text" | "email" | "password" | "number";
+  type?: "text" | "email" | "password" | "number" | "decimal";
 }
 export const InputText: FC<Props> = ({
   id,
@@ -43,6 +45,7 @@ export const InputText: FC<Props> = ({
   label,
   placeholder,
   sx,
+
   InputProps = { style: { fontSize: 12 } },
   inputNativeProps,
   InputLabelProps = { style: { fontSize: 12 } },
@@ -55,6 +58,8 @@ export const InputText: FC<Props> = ({
   variant = "outlined",
   fullWidth = true,
   disabled = false,
+  multiline = false,
+  rows,
 
   type = "text",
 }) => {
@@ -85,6 +90,8 @@ export const InputText: FC<Props> = ({
       value={value}
       defaultValue={defaultValue}
       disabled={disabled}
+      multiline={multiline}
+      rows={rows}
       type={type}
     ></TextField>
   );

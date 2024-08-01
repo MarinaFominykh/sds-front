@@ -4,34 +4,38 @@ import { ScreenRoute } from "@src/types/Screen.routes.enum";
 import { ExchangePageContainer } from "./ExchangePageContainer";
 import { ProtectedRoute } from "@components/ProtectedRoute";
 import { MainPage } from "@src/pages/MainPage";
+import { WellsPage } from "@src/pages/WellsPage/WellsPage";
 import { UsersPage } from "@src/pages/UsersPage";
 import { LoginPage } from "@src/pages/LoginPage";
 import { Layout } from "@components/Layout";
+import { MapPage } from "@src/pages/MapPage";
 
-type Children =
-  | {
-      index: boolean;
-      element: JSX.Element;
-    }
-  | {
-      path: string;
-      element: JSX.Element;
-    };
+interface Props {}
+// type Children = {
+//   index?: boolean;
+//   path?: string;
+//   element: JSX.Element;
+//   children?: Children[];
+// };
 
 type RouteData = {
   link: string;
   element?: ReactElement;
-  children?: Children[];
+  children?: RouteObject[];
   isHidden?: boolean;
 };
 
-export const ExchangeRoutes: React.FC = () => {
+export const ExchangeRoutes: React.FC<Props> = () => {
   const getPages = (): RouteData[] => {
     return [
       {
         link: `${ScreenRoute.LOGIN}`,
         element: <LoginPage />,
       },
+      // {
+      //   link: `${ScreenRoute.MAP}`,
+      //   element: <MapPage />,
+      // },
       {
         link: `${ScreenRoute.MAIN}`,
         element: <Layout />,
@@ -40,7 +44,7 @@ export const ExchangeRoutes: React.FC = () => {
             index: true,
             element: (
               <ProtectedRoute>
-                <MainPage />
+                <MainPage></MainPage>
               </ProtectedRoute>
             ),
           },
@@ -52,27 +56,25 @@ export const ExchangeRoutes: React.FC = () => {
               </ProtectedRoute>
             ),
           },
+          {
+            path: "wells",
+            element: (
+              <ProtectedRoute>
+                <WellsPage />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "map",
+            element: (
+              <ProtectedRoute>
+                <MapPage />
+              </ProtectedRoute>
+            ),
+          },
         ],
       },
     ];
-    // return [
-    //   {
-    //     link: `${ScreenRoute.LOGIN}`,
-    //     element: <LoginPage />,
-    //   },
-    //   {
-    //     link: `${ScreenRoute.MAIN}`,
-    //     element: (
-    //       <ProtectedRoute>
-    //         <MainPage />
-    //       </ProtectedRoute>
-    //     ),
-    //   },
-    //   {
-    //     link: `${ScreenRoute.USERS}`,
-    //     element: <UsersPage />,
-    //   },
-    // ];
   };
 
   const getRouteList = () => {

@@ -1,0 +1,39 @@
+@import "../../../../assets/styles/font-family.scss";
+@import "../../../../assets/styles/text-style.scss";
+@import "../../../../assets/styles/colors.scss";
+@import "../../../../assets/styles/reset.scss";
+.container {
+  * {
+    box-sizing: border-box;
+  }
+}
+.title {
+  font-family: $Roboto;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.content {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 4px;
+  display: flex;
+  padding: 12px;
+  flex-direction: column;
+}
+.row {
+  display: flex;
+  padding-bottom: 12px;
+  align-items: center;
+}
+.description {
+  font-family: $Roboto;
+  font-size: 12px;
+  padding-left: 4px;
+  color: #808080;
+}
+.text {
+  font-family: $Roboto;
+  font-size: 12px;
+  padding-left: 4px;
+}

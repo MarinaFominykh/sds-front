@@ -13,4 +13,5 @@ export enum ScreenRoute {
   ORGS = "/organizations",
   JOBS = "/jobs",
   WELLS = "/wells",
+  MAP = "/map",
 }

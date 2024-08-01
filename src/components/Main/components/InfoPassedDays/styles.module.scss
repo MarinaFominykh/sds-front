@@ -1,0 +1,42 @@
+@import "../../../../assets/styles/font-family.scss";
+@import "../../../../assets/styles/text-style.scss";
+@import "../../../../assets/styles/colors.scss";
+@import "../../../../assets/styles/reset.scss";
+.container {
+  background: #266bf1;
+
+  border-radius: 4px;
+  display: flex;
+  gap: 12px;
+  min-height: 54px;
+  align-items: center;
+  * {
+    box-sizing: border-box;
+  }
+}
+.svg {
+  margin-left: 8px;
+}
+.text {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  line-height: 120%;
+  color: #fff;
+  padding-left: 8px;
+}
+.span {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 10px;
+  line-height: 120%;
+  color: #fff;
+}
+.icon-wrapper {
+  background: #75a4ff;
+  padding: 14px;
+  border-radius: 4px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}

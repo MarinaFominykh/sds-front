@@ -1,0 +1,20 @@
+@import "../../../../../../assets/styles/font-family.scss";
+@import "../../../../../../assets/styles/text-style.scss";
+@import "../../../../../../assets/styles/colors.scss";
+@import "../../../../../../assets/styles/reset.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 32px;
+  .cell-control {
+    color: $control-text;
+  }
+  .cell-last {
+    color: $last-text;
+  }
+  .cell-selected {
+    color: $selected-text;
+  }
+}

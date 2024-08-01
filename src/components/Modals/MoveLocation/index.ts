@@ -1,0 +1,1 @@
+export { MoveLocatiton } from "./MoveLocatiton";
