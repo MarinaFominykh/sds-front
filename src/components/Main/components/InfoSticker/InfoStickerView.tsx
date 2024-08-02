@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import CrisisAlertIcon from "@mui/icons-material/CrisisAlert";
 

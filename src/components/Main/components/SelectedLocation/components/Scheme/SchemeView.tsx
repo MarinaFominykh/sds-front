@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { CircularProgress, Box, Typography } from "@mui/material";
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";

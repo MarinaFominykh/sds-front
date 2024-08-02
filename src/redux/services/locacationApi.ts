@@ -22,7 +22,7 @@ export const locationAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.GETGROUPS, args),
       }),
-      providesTags: (result) => ["location"],
+      providesTags: () => ["location"],
     }),
     getLocationByParentId: build.query({
       query: (args) => ({
@@ -38,7 +38,7 @@ export const locationAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.SETGROUP, args),
       }),
-      invalidatesTags: (result) => ["location"],
+      invalidatesTags: () => ["location"],
     }),
     editLocation: build.mutation<Response, FormValues>({
       query: (args) => ({
@@ -46,7 +46,7 @@ export const locationAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.CHANGEGROUP, args),
       }),
-      invalidatesTags: (result) => ["location"],
+      invalidatesTags: () => ["location"],
     }),
   }),
 });

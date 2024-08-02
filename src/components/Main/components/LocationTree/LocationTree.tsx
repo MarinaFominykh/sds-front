@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 import { LocationTreeView } from "./LocationTreeView";
 import { Alert } from "@mui/material";
@@ -21,13 +21,14 @@ import {
   useGetControlSessQuery,
   useGetLastSessQuery,
 } from "@src/redux/services/devsApi";
-import { useGetSchemeQuery } from "@src/redux/services/schemeApi";
+import { useGetAllWellsQuery } from "@src/redux/services/wellApi";
 
 import { useAuth } from "@hooks/useAuth";
 import { ILocation } from "@src/types/ILocation";
 
 import { IDev } from "@src/types/IDev";
 import { ISession } from "@src/types/ISession";
+import { IWell } from "@src/types/IWell";
 import { api } from "@api/api";
 import { createBodyQuery } from "@src/utils/functions";
 import { ECOMMAND } from "@src/types/ECommand";
@@ -43,6 +44,7 @@ export const LocationTree = () => {
   const { data: orgs } = useGetAllOrgsQuery({});
   const { data: locs, isLoading, isError } = useGetAllLocationQuery({});
   const { data: devs } = useGetAllDevsQuery({});
+  const { data: wells } = useGetAllWellsQuery({});
   const { data: controlSession } = useGetControlSessQuery(
     { dev_number: selectedDev?.number },
     { skip: !isVisibleDevice }
@@ -158,7 +160,7 @@ export const LocationTree = () => {
   }
 
   // Преобразуем массив с локациями в древовидную структуру
-  function buildTree(items: ILocation[], devs: IDev[]) {
+  function buildTree(items: ILocation[], devs: IDev[], wells: IWell[]) {
     const map = new Map();
     const tree: ILocation[] = [];
 
@@ -166,6 +168,7 @@ export const LocationTree = () => {
       return {
         ...item,
         devs: devs?.filter((dev: IDev) => dev.group_dev_id === item.id),
+        wells: wells?.filter((well: IWell) => well.group_id === item.id),
       };
     });
     newItems?.forEach((item) => {
@@ -205,8 +208,8 @@ export const LocationTree = () => {
 
   // Мемоизированное значение массива с локациями в виде дерева
   const locations = useMemo(
-    () => buildTree(locs?.data, devsWithSessions),
-    [devs, locs, devsWithSessions]
+    () => buildTree(locs?.data, devsWithSessions, wells?.data),
+    [devs, locs, devsWithSessions, wells]
   );
 
   // Мемоизированное значение массива с локациями в виде дерева, отфильтрованное для пользователей без прав редактирования

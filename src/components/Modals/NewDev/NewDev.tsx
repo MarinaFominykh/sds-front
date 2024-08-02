@@ -1,15 +1,12 @@
-import React, { FormEvent, useState, useEffect, FC } from "react";
+import { FormEvent, useState, useEffect, FC } from "react";
 import { NewDevView } from "./NewDevView";
-
 import { useCreateDevMutation } from "@src/redux/services/devsApi";
 import { useFormValidation } from "@hooks/useFormWithValidation";
 import { useModal } from "@hooks/useModal";
 import { useAppDispatch, useAppSelector } from "@hooks/redux";
 import { setNewSensors } from "@src/redux/reducers/devSlice";
-import { INVALID_FORM, DOUBLE_NUMBER_ERROR } from "@src/utils/messages";
-import { eVariantModal } from "@src/types/EvariantModal";
+import { DOUBLE_NUMBER_ERROR } from "@src/utils/messages";
 import { AddSensor } from "../AddSensor/AddSensor";
-import { ISensor } from "@src/types/IDev";
 
 interface Props {
   handleClose: () => void;

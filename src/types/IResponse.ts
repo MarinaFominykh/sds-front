@@ -1,5 +1,3 @@
-import { IUser } from "./IUser";
-
 export interface IResponse {
   cmd: string /* команда запроса */;
   error: string | null /* ошибка */;

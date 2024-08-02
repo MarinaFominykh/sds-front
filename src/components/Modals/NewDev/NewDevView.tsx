@@ -1,13 +1,10 @@
-import React, { FC, ChangeEvent, SyntheticEvent, MouseEvent } from "react";
+import { FC, ChangeEvent, SyntheticEvent, MouseEvent } from "react";
 import {
   Alert,
   MenuItem,
   SelectChangeEvent,
   Button as ButtonMui,
-  Stack,
   Chip,
-  List,
-  ListItem,
 } from "@mui/material";
 
 import { InputText } from "@components/_shared/Inputs/InputText";
@@ -56,7 +53,7 @@ export const NewDevView: FC<Props> = (props) => {
     handleAddSensors,
     handleDelete,
     //register,
-    values,
+
     errors,
     sensors,
     message,

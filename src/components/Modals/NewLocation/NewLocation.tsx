@@ -1,9 +1,9 @@
-import React, { useState, FormEvent, useEffect, FC } from "react";
+import { useState, FormEvent, useEffect, FC } from "react";
 import { NewLocationView } from "./NewLocationView";
 import { useFormValidation } from "@hooks/useFormWithValidation";
 import { useGetAllOrgsQuery } from "@src/redux/services/orgApi";
 import { useCreateLocationMutation } from "@src/redux/services/locacationApi";
-import { ILocation } from "@src/types/ILocation";
+
 interface Props {
   handleClose: () => void;
 }
@@ -21,7 +21,7 @@ export const NewLocation: FC<Props> = ({ handleClose }) => {
   const { data: orgs } = useGetAllOrgsQuery({});
   const [createLocation, { isError, isLoading, isSuccess }] =
     useCreateLocationMutation();
-  const [message, setMessage] = useState("");
+  const [message] = useState("");
   const isValidForm = () => {
     return (
       isValid &&

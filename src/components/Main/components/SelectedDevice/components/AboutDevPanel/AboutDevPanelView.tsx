@@ -1,4 +1,4 @@
-import React, { FC, MouseEvent } from "react";
+import { MouseEvent } from "react";
 import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
 import { Link } from "react-router-dom";
 import { IconButton } from "@mui/material";

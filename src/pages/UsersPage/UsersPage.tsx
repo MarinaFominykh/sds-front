@@ -1,5 +1,3 @@
-import React from "react";
-
 import { UserTree, SelectedUser } from "@components/User";
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";

@@ -1,9 +1,9 @@
-import React, { FC, ChangeEvent } from "react";
+import { FC, ChangeEvent } from "react";
 import { TextareaAutosize, Alert } from "@mui/material";
 import { InputText } from "@components/_shared/Inputs/InputText";
-import { IdInput } from "@components/_shared/Inputs/IdInput";
+
 import { Button } from "@components/_shared/Button";
-import { FormErrors, FormValues } from "@hooks/useFormWithValidation";
+import { FormErrors } from "@hooks/useFormWithValidation";
 import { SAVE_ERROR, SAVE_SUCCESS } from "@src/utils/messages";
 
 import { useStyles } from "@hooks/useStyles";
@@ -29,7 +29,6 @@ interface Props {
 }
 export const NewOrgView: FC<Props> = ({
   handleChange,
-  handleBlur,
   errors,
   isLoading,
   isValidForm,

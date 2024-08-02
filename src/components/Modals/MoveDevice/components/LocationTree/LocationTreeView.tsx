@@ -1,8 +1,7 @@
-import React, { FC, ElementType, useEffect } from "react";
-import { CircularProgress, Alert } from "@mui/material";
+import { FC } from "react";
+import { CircularProgress } from "@mui/material";
 import { SimpleTreeView } from "@mui/x-tree-view";
 import { ILocation } from "@src/types/ILocation";
-import { IDev } from "@src/types/IDev";
 import { LocationItem } from "./LocationItem";
 
 import { useStyles } from "@hooks/useStyles";
@@ -25,7 +24,7 @@ export const LocationTreeView: FC<Props> = (props) => {
       ) : (
         <SimpleTreeView
           className={cx("tree")}
-          onSelectedItemsChange={(e, id) => handleClick(id)}
+          onSelectedItemsChange={(_, id) => handleClick(id)}
         >
           {locations?.map((location) => (
             <LocationItem

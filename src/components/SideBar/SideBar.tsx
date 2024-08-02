@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import {
   Drawer,
-  Button,
   Box,
   List,
   ListItem,
@@ -10,11 +9,10 @@ import {
   ListItemText,
   Divider,
 } from "@mui/material";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+
 import { Link } from "react-router-dom";
-import { useAppSelector, useAppDispatch } from "@hooks/redux";
-import { useModal } from "@hooks/useModal";
+import { useAppDispatch } from "@hooks/redux";
+
 import { useStyles } from "@hooks/useStyles";
 import { setVariant } from "@src/redux/reducers/ModalSlice";
 import styles from "./styles.module.scss";
@@ -36,7 +34,6 @@ interface Props {
 export const SideBar: FC<Props> = ({ open, onClose, onOpenModal }) => {
   const cx = useStyles(styles);
   const dispatch = useAppDispatch();
-  const { variant } = useAppSelector((state) => state.modalSlice);
 
   const handleOpenModal = (item: itemModal) => {
     dispatch(setVariant({ title: item.title, variant: item.modal }));

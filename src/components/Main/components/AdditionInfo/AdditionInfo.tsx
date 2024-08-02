@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Divider } from "@mui/material";
 import CommitIcon from "@mui/icons-material/Commit";
 import Battery0BarIcon from "@mui/icons-material/Battery0Bar";

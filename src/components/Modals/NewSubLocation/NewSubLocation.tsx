@@ -1,10 +1,9 @@
-import React, { useState, FormEvent, useEffect, FC } from "react";
+import { useState, FormEvent, useEffect, FC } from "react";
 import { NewSubLocationView } from "./NewSubLocationView";
 import { useFormValidation } from "@hooks/useFormWithValidation";
-import { useGetAllOrgsQuery } from "@src/redux/services/orgApi";
 import { useCreateLocationMutation } from "@src/redux/services/locacationApi";
 import { useAppSelector } from "@hooks/redux";
-import { ILocation } from "@src/types/ILocation";
+
 interface Props {
   handleClose: () => void;
 }
@@ -19,19 +18,19 @@ export const NewSubLocation: FC<Props> = ({ handleClose }) => {
     isValid,
     resetForm,
   } = useFormValidation();
-  const { data: orgs } = useGetAllOrgsQuery({});
+
   const [createLocation, { isError, isLoading, isSuccess }] =
     useCreateLocationMutation();
   const { selectedLocation } = useAppSelector((state) => state.locationSlice);
-  const [message, setMessage] = useState("");
-  const isValidForm = () => {
-    return (
-      isValid &&
-      Boolean(values.id_org) &&
-      !Boolean(errors.latitude) &&
-      !Boolean(errors.longitude)
-    );
-  };
+  const [message, _] = useState("");
+  // const isValidForm = () => {
+  //   return (
+  //     isValid &&
+  //     Boolean(values.id_org) &&
+  //     !Boolean(errors.latitude) &&
+  //     !Boolean(errors.longitude)
+  //   );
+  // };
   const generateArgs = () => {
     const args = {
       ...values,

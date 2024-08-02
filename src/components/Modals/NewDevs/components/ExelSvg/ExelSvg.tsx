@@ -1,4 +1,3 @@
-import React from "react";
 import { useStyles } from "@hooks/useStyles";
 
 import styles from "./styles.module.scss";

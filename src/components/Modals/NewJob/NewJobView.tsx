@@ -1,4 +1,4 @@
-import React, { ChangeEvent, SyntheticEvent, FC, FormEvent } from "react";
+import { ChangeEvent, SyntheticEvent, FC } from "react";
 import {
   SelectChangeEvent,
   MenuItem,
@@ -8,7 +8,7 @@ import {
 import { Select } from "@components/_shared/Inputs/Select";
 import { InputText } from "@components/_shared/Inputs/InputText";
 import { Button } from "@components/_shared/Button";
-import { FormValues, FormErrors } from "@hooks/useFormWithValidation";
+import { FormValues } from "@hooks/useFormWithValidation";
 import { IOrg } from "@src/types/IOrg";
 import { SAVE_ERROR, SAVE_SUCCESS } from "@src/utils/messages";
 import { useStyles } from "@hooks/useStyles";

@@ -34,11 +34,11 @@ function Panel(props: PanelProps) {
 }
 
 export const TabPanelView = (props: TabPanelViewProps) => {
-  const { isSelectedSession, ...other } = props;
+  const { isSelectedSession } = props;
   const cx = useStyles(styles);
   const [value, setValue] = React.useState(0);
 
-  const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChangeTab = (_: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 

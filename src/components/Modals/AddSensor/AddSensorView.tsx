@@ -1,19 +1,12 @@
-import React, { FC, ReactNode, ChangeEvent, FormEvent } from "react";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from "@mui/material";
-import { useAppSelector, useAppDispatch } from "@hooks/redux";
+import { FC, ChangeEvent, FormEvent } from "react";
+import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 import { useStyles } from "@hooks/useStyles";
 import { CloseButton } from "@components/_shared/CloseButton";
 import { Typography } from "@components/_shared/Typography";
 import styles from "./styles.module.scss";
 import { InputText } from "@components/_shared/Inputs/InputText";
 import { Button } from "@components/_shared/Button";
-import { ErrorSharp } from "@mui/icons-material";
+
 import { FormErrors, FormValues } from "@hooks/useFormWithValidation";
 interface Props {
   open: boolean;

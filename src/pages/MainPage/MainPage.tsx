@@ -1,13 +1,6 @@
-import { useState, useEffect } from "react";
-import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
-
-import { authChecked } from "@src/redux/reducers/UserSlice";
 import { Main } from "@components/Main";
 import { LocationTree } from "@components/Main/components/LocationTree";
-import { SelectedLocation } from "@components/Main/components/SelectedLocation";
-import { SelectedDevice } from "@components/Main/components/SelectedDevice";
-import { InfoSticker } from "@components/Main/components/InfoSticker";
-import { useAppDispatch } from "@hooks/redux";
+
 import { useStyles } from "@hooks/useStyles";
 
 import styles from "./styles.module.scss";
@@ -17,13 +10,13 @@ import { LeftSidebar } from "@components/Main/components/LeftSidebar";
 export const MainPage = () => {
   const cx = useStyles(styles);
   const cxShared = useStyles(sharedStyles);
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    localStorage.clear();
-    dispatch(authChecked(false));
-    navigate("/login");
-  };
+  // const dispatch = useAppDispatch();
+  // const navigate = useNavigate();
+  // const handleLogout = () => {
+  //   localStorage.clear();
+  //   dispatch(authChecked(false));
+  //   navigate("/login");
+  // };
 
   return (
     <>

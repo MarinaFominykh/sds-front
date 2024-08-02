@@ -1,11 +1,9 @@
-import React, { useState, useEffect, FC, FormEvent, ChangeEvent } from "react";
+import { useState, useEffect, FC, FormEvent } from "react";
 import { EditUserView } from "./EditUserView";
-import { useAppDispatch, useAppSelector } from "@hooks/redux";
+import { useAppSelector } from "@hooks/redux";
 import { FormValues, useFormValidation } from "@hooks/useFormWithValidation";
-import { useGetAllJobsQuery } from "@src/redux/services/jobsApi";
-import { useGetAllOrgsQuery } from "@src/redux/services/orgApi";
 import { useEditUserMutation } from "@src/redux/services/userApi";
-import { setSelectedUser } from "@src/redux/reducers/UserSlice";
+
 import {
   INVALID_FORM,
   INVALID_PASSWORD_ERROR,
@@ -14,14 +12,11 @@ import {
 } from "@src/utils/messages";
 import { passwordRegex } from "@src/utils/regexp";
 
-import { IJob } from "@src/types/IJob";
-
 interface Props {
   handleClose: () => void;
 }
 
 export const EditUser: FC<Props> = ({ handleClose }) => {
-  const dispatch = useAppDispatch();
   const { selectedUser } = useAppSelector((state) => state.userSlice);
 
   // const { data: orgs } = useGetAllOrgsQuery({});

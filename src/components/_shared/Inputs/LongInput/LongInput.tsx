@@ -1,5 +1,4 @@
-import React, { useCallback, FC, useRef, FormEvent } from "react";
-import PropTypes from "prop-types";
+import React, { FormEvent } from "react";
 import { IMaskInput } from "react-imask";
 
 interface IProps {

@@ -1,10 +1,7 @@
-import { FC, useEffect, useState, FormEvent, MouseEvent } from "react";
+import { FC, useEffect, useState, FormEvent } from "react";
 
 import { useFormValidation } from "@hooks/useFormWithValidation";
-import {
-  useCreateUserMutation,
-  useGetAllUsersQuery,
-} from "@src/redux/services/userApi";
+import { useCreateUserMutation } from "@src/redux/services/userApi";
 import { useGetAllJobsQuery } from "@src/redux/services/jobsApi";
 import { useGetAllOrgsQuery } from "@src/redux/services/orgApi";
 import { setVariant } from "@src/redux/reducers/ModalSlice";
@@ -14,14 +11,12 @@ import { NewUserView } from "./NewUserView";
 import { INVALID_FORM } from "@src/utils/messages";
 import { passwordRegex } from "@src/utils/regexp";
 import {
-  DOUBL_LOGIN_ERROR,
   MATCHING_LOGIN_AND_PASS_ERROR,
   PASSWORDS_NOT_MATCH,
   INVALID_PASSWORD_ERROR,
 } from "@src/utils/messages";
 
 import { IJob } from "@src/types/IJob";
-import { IUserCreate } from "@src/types/IUser";
 import { eVariantModal } from "@src/types/EvariantModal";
 
 interface Props {
@@ -30,7 +25,7 @@ interface Props {
 export const NewUser: FC<Props> = ({ handleClose }) => {
   const [message, setMessage] = useState("");
   const [jobOptions, setJobOptions] = useState([]);
-  const [open, openModal, closeModal] = useModal();
+  const [_, openModal, __] = useModal();
   const {
     values,
     setValues,
@@ -44,14 +39,10 @@ export const NewUser: FC<Props> = ({ handleClose }) => {
     isValid,
     resetForm,
   } = useFormValidation();
-  const [createUser, { isLoading, error, isSuccess, isError }] =
+  const [createUser, { isLoading, isSuccess, isError }] =
     useCreateUserMutation();
-  const {
-    data: orgs,
-    isLoading: isLoadingOrgs,
-    error: errorOrgs,
-  } = useGetAllOrgsQuery({});
-  const { data: users } = useGetAllUsersQuery({});
+  const { data: orgs } = useGetAllOrgsQuery({});
+
   const { data: jobs } = useGetAllJobsQuery({});
   const dispatch = useAppDispatch();
 

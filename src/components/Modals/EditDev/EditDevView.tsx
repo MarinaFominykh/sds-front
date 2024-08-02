@@ -1,13 +1,10 @@
-import React, { ChangeEvent, SyntheticEvent, MouseEvent } from "react";
+import { ChangeEvent, SyntheticEvent, MouseEvent } from "react";
 import {
   Alert,
   MenuItem,
   SelectChangeEvent,
   Button as ButtonMui,
-  Stack,
   Chip,
-  List,
-  ListItem,
 } from "@mui/material";
 import { InputText } from "@components/_shared/Inputs/InputText";
 import { LatInput } from "@components/_shared/Inputs/LatInput";
@@ -17,7 +14,7 @@ import { Typography } from "@components/_shared/Typography";
 import { Button } from "@components/_shared/Button";
 import { Switch } from "@components/_shared/Switch";
 import { periodOptionsData } from "@src/data/data";
-import { FormValues, FormErrors } from "@hooks/useFormWithValidation";
+import { FormErrors } from "@hooks/useFormWithValidation";
 import { IDev, ISensor } from "@src/types/IDev";
 import { SAVE_ERROR, SAVE_SUCCESS } from "@src/utils/messages";
 import { latRegex, longRegex } from "@src/utils/regexp";

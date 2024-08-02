@@ -1,23 +1,12 @@
-import React, { FC, ChangeEvent, SyntheticEvent } from "react";
-import {
-  SelectChangeEvent,
-  TextareaAutosize,
-  MenuItem,
-  Alert,
-  Divider,
-  Button as ButtonMui,
-  Stack,
-} from "@mui/material";
+import { FC, ChangeEvent, SyntheticEvent } from "react";
+import { SelectChangeEvent, Alert } from "@mui/material";
 import { latRegex, longRegex } from "@src/utils/regexp";
 import { SAVE_ERROR, SAVE_SUCCESS } from "@src/utils/messages";
 import { InputText } from "@components/_shared/Inputs/InputText";
 import { LatInput } from "@components/_shared/Inputs/LatInput";
 import { LongInput } from "@components/_shared/Inputs/LongInput";
-import { Select } from "@components/_shared/Inputs/Select";
 import { Button } from "@components/_shared/Button";
-
 import { FormErrors, FormValues } from "@hooks/useFormWithValidation";
-import { IOrg } from "@src/types/IOrg";
 
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";

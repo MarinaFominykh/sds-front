@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Alert } from "@mui/material";
 
 import { Button } from "@components/_shared/Button";

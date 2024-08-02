@@ -1,12 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ECOMMAND } from "@src/types/ECommand";
 import { createBodyQuery } from "@src/utils/functions";
-import { IUser, IUserCreate } from "@src/types/IUser";
-import { IOrg } from "@src/types/IOrg";
 import { FormValues } from "@hooks/useFormWithValidation";
-import { create } from "@mui/material/styles/createTransitions";
 import { IResponse } from "@src/types/IResponse";
-import { IQuery } from "@src/types/IQuery";
 
 type Arguments = {
   group_svg: string;
@@ -25,7 +21,7 @@ export const schemeAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.GETSCHEME, args),
       }),
-      providesTags: (result) => ["Scheme"],
+      providesTags: () => ["Scheme"],
     }),
     createScheme: build.mutation<IResponse, Arguments>({
       query: (args) => ({
@@ -33,7 +29,7 @@ export const schemeAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.SETSCHEME, args),
       }),
-      invalidatesTags: (result) => ["Scheme"],
+      invalidatesTags: () => ["Scheme"],
     }),
   }),
 });

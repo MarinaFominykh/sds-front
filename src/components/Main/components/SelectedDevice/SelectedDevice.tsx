@@ -1,4 +1,3 @@
-import React from "react";
 import { SelectedDeviceView } from "./SelectedDeviceView";
 import { useAppSelector } from "@hooks/redux";
 

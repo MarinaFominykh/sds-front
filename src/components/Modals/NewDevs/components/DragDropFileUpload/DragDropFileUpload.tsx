@@ -1,12 +1,11 @@
 import React, { useCallback, useState, ChangeEvent } from "react";
-import { OutTable, ExcelRenderer } from "react-excel-renderer";
+import { ExcelRenderer } from "react-excel-renderer";
 
 import {
   Box,
   Paper,
   IconButton,
   CircularProgress,
-  Stack,
   Alert,
   Table,
   TableBody,
@@ -14,19 +13,15 @@ import {
   TableCell,
 } from "@mui/material";
 import { writeFile, utils } from "xlsx";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+
 import { Typography } from "@components/_shared/Typography";
 import { Button } from "@components/_shared/Button";
 import { ExelSvg } from "../ExelSvg";
-import { TablePreview } from "../TablePreview";
+
 import { setNewDevsTable } from "@src/redux/reducers/devSlice";
 import { useAppDispatch } from "@hooks/redux";
 import { useStyles } from "@hooks/useStyles";
-import {
-  SAVE_ERROR,
-  SAVE_SUCCESS,
-  INVALID_TYPE_ERROR,
-} from "@src/utils/messages";
+import { SAVE_ERROR, INVALID_TYPE_ERROR } from "@src/utils/messages";
 import styles from "./styles.module.scss";
 import { ITable } from "@src/types/ITable";
 

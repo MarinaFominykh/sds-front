@@ -1,6 +1,9 @@
-import React from "react";
 import { WellsView } from "./WellsView";
 
+import { useAppSelector } from "@hooks/redux";
+
 export const Wells = () => {
-  return <WellsView />;
+  const { locationsTree } = useAppSelector((state) => state.locationSlice);
+
+  return <WellsView locations={locationsTree} />;
 };

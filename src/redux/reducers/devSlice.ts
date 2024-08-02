@@ -1,7 +1,7 @@
 //import { Table } from "@components/Modals/NewDevs/components/DragDropFileUpload/DragDropFileUpload";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IDev, ISensor } from "@src/types/IDev";
-import { ITable, Table } from "@src/types/ITable";
+import { ITable } from "@src/types/ITable";
 
 interface DevState {
   devs: IDev[];

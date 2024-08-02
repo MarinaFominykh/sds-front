@@ -1,4 +1,4 @@
-import React, { FC, SyntheticEvent } from "react";
+import { FC, SyntheticEvent } from "react";
 
 import { Select } from "@components/_shared/Inputs/Select";
 import { SelectChangeEvent, MenuItem, Alert } from "@mui/material";
@@ -37,7 +37,6 @@ export const MoveLocationView: FC<Props> = (props) => {
     isErrorSave,
     isSuccessSave,
     isRootLocation,
-    ...other
   } = props;
   const cx = useStyles(styles);
   return (

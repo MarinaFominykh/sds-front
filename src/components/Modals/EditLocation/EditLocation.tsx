@@ -1,19 +1,14 @@
-import React, { useState, useEffect, FormEvent, FC, ChangeEvent } from "react";
-import { SelectChangeEvent } from "@mui/material";
+import { useState, useEffect, FormEvent, FC, ChangeEvent } from "react";
+
 import { useAppDispatch, useAppSelector } from "@hooks/redux";
 import { EditLocationView } from "./EditLocationView";
 import { FormValues, useFormValidation } from "@hooks/useFormWithValidation";
 import { useGetAllOrgsQuery } from "@src/redux/services/orgApi";
-import {
-  useCreateLocationMutation,
-  useEditLocationMutation,
-} from "@src/redux/services/locacationApi";
-import {
-  setSelectedLocation,
-  setLocations,
-} from "@src/redux/reducers/locationSlice";
+import { useEditLocationMutation } from "@src/redux/services/locacationApi";
+import { setSelectedLocation } from "@src/redux/reducers/locationSlice";
 import { IOrg } from "@src/types/IOrg";
 import { INVALID_FORM } from "@src/utils/messages";
+import { ILocation } from "@src/types/ILocation";
 
 interface Props {
   handleClose: () => void;
@@ -48,7 +43,9 @@ export const EditLocation: FC<Props> = ({ handleClose }) => {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    dispatch(setSelectedLocation({ ...selectedLocation, [name]: value }));
+    dispatch(
+      setSelectedLocation({ ...(selectedLocation as ILocation), [name]: value })
+    );
   };
 
   const generateArgs = (values: FormValues) => {

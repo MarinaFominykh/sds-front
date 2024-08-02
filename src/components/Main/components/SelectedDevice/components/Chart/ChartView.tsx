@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import {
   LineChart,
   Line,
@@ -13,7 +12,6 @@ import {
   CustomizedGroupTick,
   CustomTooltip,
 } from "./components/Tooltip/Tooltip";
-import { ISensor } from "@src/types/IDev";
 import { useAppSelector } from "@hooks/redux";
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";
@@ -391,7 +389,7 @@ export const ChartView = () => {
           <YAxis
             interval={0}
             ticks={depths}
-            domain={[0, max]}
+            domain={[min, max]}
             dataKey="depth"
             type="number"
             strokeWidth={"0.1mm"}

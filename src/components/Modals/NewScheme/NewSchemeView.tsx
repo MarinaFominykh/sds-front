@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { DragDropFileUpload } from "./components/DragDropFileUpload/DragDropFileUpload";
 
 interface Props {

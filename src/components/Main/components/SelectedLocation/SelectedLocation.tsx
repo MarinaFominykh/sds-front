@@ -1,13 +1,11 @@
-import React, { useState, MouseEvent } from "react";
+import { useState, MouseEvent } from "react";
 import { Modal } from "@components/_shared/Modal";
 import { BigButton } from "@components/_shared/BigButton";
 import { useAppDispatch, useAppSelector } from "@hooks/redux";
 import { useModal } from "@hooks/useModal";
-import { useFormValidation } from "@hooks/useFormWithValidation";
 import { setVariant } from "@src/redux/reducers/ModalSlice";
 import { eVariantModal } from "@src/types/EvariantModal";
 import { SelectedLocationView } from "./SelectedLocationView";
-import { Typography } from "@components/_shared/Typography";
 import sharedStyles from "../../../../assets/styles/shared.module.scss";
 import { useStyles } from "@hooks/useStyles";
 export const SelectedLocation = () => {

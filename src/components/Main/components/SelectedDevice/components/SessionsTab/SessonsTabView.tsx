@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent, FormEvent } from "react";
+import { FC, ChangeEvent, FormEvent } from "react";
 import { TextField } from "@mui/material";
 import { Button } from "@components/_shared/Button";
 import { SessionTable } from "../SessionTable";

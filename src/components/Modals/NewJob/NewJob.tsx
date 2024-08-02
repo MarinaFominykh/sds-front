@@ -1,16 +1,10 @@
-import React, { FormEvent, FC, useState, useEffect } from "react";
+import { FormEvent, FC, useEffect } from "react";
 import { useFormValidation } from "@hooks/useFormWithValidation";
-import {
-  useGetAllOrgsQuery,
-  useCreateOrgMutation,
-} from "@src/redux/services/orgApi";
+import { useGetAllOrgsQuery } from "@src/redux/services/orgApi";
 import { useCreateJobMutation } from "@src/redux/services/jobsApi";
 import { NewJobView } from "./NewJobView";
-import { SAVE_SUCCESS, SAVE_ERROR } from "@src/utils/messages";
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";
-
-import { IJob } from "@src/types/IJob";
 
 interface Props {
   handleClose: () => void;
@@ -20,21 +14,15 @@ export const NewJob: FC<Props> = ({ handleClose }) => {
   const cx = useStyles(styles);
   const {
     values,
-    setValues,
-    setErrors,
     errors,
     handleChange,
     handleSelectChange,
-
-    handleCheckboxChange,
     handleCloseSelect,
-    handleBlur,
     isValid,
     resetForm,
   } = useFormValidation();
   const { data: orgs } = useGetAllOrgsQuery({});
-  const [createJob, { isLoading, error, isError, isSuccess }] =
-    useCreateJobMutation();
+  const [createJob, { isLoading, isError, isSuccess }] = useCreateJobMutation();
 
   const generateArgs = () => {
     const args = {

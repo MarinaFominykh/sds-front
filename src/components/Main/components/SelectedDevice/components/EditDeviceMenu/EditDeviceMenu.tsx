@@ -1,14 +1,11 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Menu, MenuItem, ListItemIcon } from "@mui/material";
 import ModeEditRoundedIcon from "@mui/icons-material/ModeEditRounded";
 import MoveUpRoundedIcon from "@mui/icons-material/MoveUpRounded";
 import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { eVariantModal } from "@src/types/EvariantModal";
-import { ILocation } from "@src/types/ILocation";
 import { IDev } from "@src/types/IDev";
-
-import { useAppSelector } from "@hooks/redux";
 
 interface Props {
   device: IDev | null;

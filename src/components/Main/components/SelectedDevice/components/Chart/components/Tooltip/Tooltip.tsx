@@ -1,11 +1,11 @@
 import { Box, Typography } from "@mui/material";
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import DeviceThermostatIcon from "@mui/icons-material/DeviceThermostat";
 
 export const CustomizedLabel1: FunctionComponent<any> = (props: any) => {
-  const { x, y, stroke, value } = props;
+  const { x, y, value } = props;
 
   if (Number(1.44) >= Number(value)) {
     return (
@@ -25,7 +25,7 @@ export const CustomizedLabel1: FunctionComponent<any> = (props: any) => {
 };
 
 export const CustomizedGroupTick = (props: any) => {
-  const { index, x, y, payload } = props;
+  const { x, y, payload } = props;
 
   return (
     <g>
@@ -52,7 +52,7 @@ export const CustomizedGroupTick = (props: any) => {
   );
 };
 
-export const CustomTooltip = ({ active, payload, label, props }: any) => {
+export const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <>

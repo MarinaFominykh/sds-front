@@ -1,8 +1,7 @@
 import { FC, FormEvent } from "react";
 import { AddSensorView } from "./AddSensorView";
 import { useFormValidation } from "@hooks/useFormWithValidation";
-import { useAppDispatch, useAppSelector } from "@hooks/redux";
-import { setNewSensors } from "@src/redux/reducers/devSlice";
+
 import { ISensor } from "@src/types/IDev";
 
 interface Props {
@@ -15,8 +14,6 @@ export const AddSensor: FC<Props> = (props) => {
   const { sensors, setSensors, ...other } = props;
   const { values, errors, handleChange, isValid, resetForm } =
     useFormValidation();
-  const dispatch = useAppDispatch();
-  const { newSensors } = useAppSelector((state) => state.devSlice);
 
   const addNewSensor = (event: FormEvent) => {
     event.preventDefault();

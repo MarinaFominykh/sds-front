@@ -1,16 +1,19 @@
-import React, { FC } from "react";
+import { FC } from "react";
 
 import { useStyles } from "@hooks/useStyles";
 
 import styles from "./styles.module.scss";
 
-export const TablePreview: FC = ({ data }) => {
+interface Props {
+  data: any;
+}
+export const TablePreview: FC<Props> = ({ data }) => {
   const cx = useStyles(styles);
   return (
     <table>
       <thead>
         <tr>
-          {data.cols.map((col) => (
+          {data.cols.map((col: any) => (
             <th className={cx("head-cell")} key={col.key}>
               {col.name}
             </th>
@@ -18,9 +21,9 @@ export const TablePreview: FC = ({ data }) => {
         </tr>
       </thead>
       <tbody>
-        {data.rows.map((row, i) => (
+        {data.rows.map((row: any, i: number) => (
           <tr className={cx("cell")} key={i}>
-            {row.map((cell, iCell) => (
+            {row.map((cell: any, iCell: any) => (
               <td key={iCell}>{cell}</td>
             ))}
           </tr>

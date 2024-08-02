@@ -1,5 +1,5 @@
-import React, { FormEvent, useState, useEffect, FC } from "react";
-import { FormValues, useFormValidation } from "@hooks/useFormWithValidation";
+import { FormEvent, useState, useEffect, FC } from "react";
+import { useFormValidation } from "@hooks/useFormWithValidation";
 import { useAppSelector } from "@hooks/redux";
 import { NewVerifRangeView } from "./NewVerifRangeView";
 import { useCreateVerifRangeMutation } from "@src/redux/services/devsApi";

@@ -1,13 +1,5 @@
-import React, { FC, ChangeEvent, SyntheticEvent } from "react";
-import {
-  SelectChangeEvent,
-  TextareaAutosize,
-  MenuItem,
-  Alert,
-  Divider,
-  Button as ButtonMui,
-  Stack,
-} from "@mui/material";
+import { FC, ChangeEvent, SyntheticEvent } from "react";
+import { SelectChangeEvent, MenuItem, Alert } from "@mui/material";
 import { latRegex, longRegex } from "@src/utils/regexp";
 import { SAVE_ERROR, SAVE_SUCCESS } from "@src/utils/messages";
 import { InputText } from "@components/_shared/Inputs/InputText";

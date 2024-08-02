@@ -1,0 +1,22 @@
+@import "../../../../assets/styles/font-family.scss";
+@import "../../../../assets/styles/text-style.scss";
+@import "../../../../assets/styles/colors.scss";
+@import "../../../../assets/styles/reset.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.search {
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  box-shadow: none;
+  background-color: $background;
+  border-radius: 4px;
+}

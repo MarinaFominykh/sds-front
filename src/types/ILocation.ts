@@ -1,5 +1,6 @@
 import { IDev } from "./IDev";
 import { IOrg } from "./IOrg";
+import { IWell } from "./IWell";
 
 export interface ILocation {
   id?: string | undefined;
@@ -12,8 +13,9 @@ export interface ILocation {
   id_org?: string | undefined;
   g_info?: string | undefined;
   deleted?: boolean | undefined;
-  subLocations?: ILocation[];
+  subLocations: ILocation[];
   devs?: IDev[];
+  wells: IWell[];
   org?: IOrg;
   svg?: string | undefined;
 }

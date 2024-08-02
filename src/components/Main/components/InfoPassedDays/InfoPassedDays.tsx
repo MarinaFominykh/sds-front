@@ -1,11 +1,6 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import moment from "moment";
-import { Box, Typography } from "@mui/material";
-import SignalCellularAltIcon from "@mui/icons-material/SignalCellularAlt";
-import { useAppSelector } from "@hooks/redux";
-import { useGetLastSessQuery } from "@src/redux/services/devsApi";
 import { useStyles } from "@hooks/useStyles";
-
 import styles from "./styles.module.scss";
 
 interface Props {

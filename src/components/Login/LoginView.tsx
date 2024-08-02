@@ -1,10 +1,9 @@
-import React, { FC, ChangeEvent } from "react";
+import { FC, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { Typography } from "@components/_shared/Typography";
 import { InputWithIcon } from "@components/_shared/Inputs/InputWithIcon";
 import { InputText } from "@components/_shared/Inputs/InputText";
 import { Button } from "@components/_shared/Button";
-import { useFormValidation } from "@hooks/useFormWithValidation";
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";
 

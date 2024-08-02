@@ -1,10 +1,5 @@
-import React, { useState } from "react";
 import { useAppSelector } from "@hooks/redux";
-import { useGetLastSessQuery } from "@src/redux/services/devsApi";
-import {
-  useGetVerifRangeQuery,
-  useGetControlSessQuery,
-} from "@src/redux/services/devsApi";
+import { useGetVerifRangeQuery } from "@src/redux/services/devsApi";
 import { InfoSticker } from "../InfoSticker";
 import { InfoPassedDays } from "../InfoPassedDays";
 import { VerifRange } from "../VerifRange";

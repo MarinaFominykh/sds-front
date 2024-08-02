@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, ElementType } from "react";
+import { FC } from "react";
 import moment from "moment";
 import { TreeItem } from "@mui/x-tree-view";
 import FolderIcon from "@mui/icons-material/Folder";
@@ -7,10 +7,6 @@ import { ILocation } from "@src/types/ILocation";
 import CrisisAlertIcon from "@mui/icons-material/CrisisAlert";
 import { IDev } from "@src/types/IDev";
 
-import { useStyles } from "@hooks/useStyles";
-
-import styles from "./styles.module.scss";
-
 interface Props {
   location: ILocation;
   isLoading: boolean;
@@ -18,7 +14,6 @@ interface Props {
 }
 
 export const LocationItem: FC<Props> = ({ location, isLoading, isDevs }) => {
-  const cx = useStyles(styles);
   const getIcon = () => {
     return location?.devs?.length !== 0 ? FolderIcon : FolderZipIcon;
   };

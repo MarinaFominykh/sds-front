@@ -1,4 +1,4 @@
-import React, { FC, ElementType } from "react";
+import { FC } from "react";
 import { SimpleTreeView, TreeItem } from "@mui/x-tree-view";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 
@@ -17,7 +17,7 @@ export const Tree: FC<Props> = ({ users, handleSelected }) => {
 
   return (
     <SimpleTreeView
-      onSelectedItemsChange={(e, id) => handleSelected(id)}
+      onSelectedItemsChange={(_, id) => handleSelected(id)}
       className={cx("tree")}
       slots={{
         endIcon: AccountCircleOutlinedIcon,

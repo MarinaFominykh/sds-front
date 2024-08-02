@@ -1,11 +1,11 @@
-import React, { FC, FormEvent, useState, useEffect, ChangeEvent } from "react";
+import { FC, FormEvent, useState, useEffect, ChangeEvent } from "react";
 import { EditDevView } from "./EditDevView";
 import { AddSensor } from "../AddSensor/AddSensor";
 import { useModal } from "@hooks/useModal";
 import { useEditDevMutation } from "@src/redux/services/devsApi";
 import { setSelectedDev } from "@src/redux/reducers/devSlice";
 import { useAppDispatch, useAppSelector } from "@hooks/redux";
-import { FormValues, useFormValidation } from "@hooks/useFormWithValidation";
+import { useFormValidation } from "@hooks/useFormWithValidation";
 import { IDev, ISensor } from "@src/types/IDev";
 import { FormErrors } from "@hooks/useFormWithValidation";
 import { SelectChangeEvent } from "@mui/material";
@@ -17,8 +17,6 @@ interface Props {
 export const EditDev: FC<Props> = ({ handleClose }) => {
   const dispatch = useAppDispatch();
   const {
-    values,
-
     handleCloseSelect,
     //handleCheckboxChange,
     resetForm,

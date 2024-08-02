@@ -76,4 +76,14 @@ export enum ECOMMAND {
   DELETECONTROLSESS = "set_deleteControlDevSess",
   // Получений сессий устройства за определенный период
   GETSELECTEDDEVSESSIONS = "get_DevSess",
+
+  //----------------------------------Скважины
+  //Получение всех скважин
+  GETALLWELLS = "get_AllThermalWells",
+  //Получение скважины по id группы
+  GETWELLSBYLOCATIONID = "get_ThermalWells",
+  //Добавление скважины
+  SETWELL = "set_ThermalWell",
+  //Редактирование скважины
+  CHANGEWELL = "set_ChangeThermalWell",
 }

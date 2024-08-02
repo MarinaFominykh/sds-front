@@ -17,7 +17,7 @@ export const jobAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.GETJOB, args),
       }),
-      providesTags: (result) => ["Job"],
+      providesTags: () => ["Job"],
     }),
     createJob: build.mutation<IJob, FormValues>({
       query: (args) => ({
@@ -25,7 +25,7 @@ export const jobAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.SETJOB, args),
       }),
-      invalidatesTags: (result) => ["Job"],
+      invalidatesTags: () => ["Job"],
     }),
   }),
 });

@@ -1,13 +1,10 @@
-import React, { useState, useEffect, SyntheticEvent, FC } from "react";
+import { useState, useEffect, SyntheticEvent, FC } from "react";
 import { SelectChangeEvent } from "@mui/material";
 import { MoveLocationView } from "./MoveLocationView";
 import { useAppSelector, useAppDispatch } from "@hooks/redux";
-import { FormValues, useFormValidation } from "@hooks/useFormWithValidation";
+import { useFormValidation } from "@hooks/useFormWithValidation";
 import { useGetAllOrgsQuery } from "@src/redux/services/orgApi";
-import {
-  useCreateLocationMutation,
-  useEditLocationMutation,
-} from "@src/redux/services/locacationApi";
+import { useEditLocationMutation } from "@src/redux/services/locacationApi";
 import { setSelectedLocation } from "@src/redux/reducers/locationSlice";
 import { IOrg } from "@src/types/IOrg";
 import { ILocation } from "@src/types/ILocation";
@@ -17,9 +14,7 @@ interface Props {
 }
 export const MoveLocatiton: FC<Props> = ({ handleClose }) => {
   const dispatch = useAppDispatch();
-  const { locationsTree, locations, selectedLocation } = useAppSelector(
-    (state) => state.locationSlice
-  );
+  const { selectedLocation } = useAppSelector((state) => state.locationSlice);
   const { data: orgs } = useGetAllOrgsQuery({});
   const [editLocation, { isError, isLoading, isSuccess }] =
     useEditLocationMutation();
@@ -32,7 +27,9 @@ export const MoveLocatiton: FC<Props> = ({ handleClose }) => {
   const isRootLocation = selectedLocation?.parent_id === "0";
   const handleSelectChange = (event: SelectChangeEvent) => {
     const { name, value } = event.target;
-    dispatch(setSelectedLocation({ ...selectedLocation, [name]: value }));
+    dispatch(
+      setSelectedLocation({ ...(selectedLocation as ILocation), [name]: value })
+    );
   };
   const handleSelectLocation = (id: string | null) => {
     if (id) setParent(id);

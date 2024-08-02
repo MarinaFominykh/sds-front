@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { InfoStickerView } from "./InfoStickerView";
 import { useAuth } from "@hooks/useAuth";
-import { useAppDispatch, useAppSelector } from "@hooks/redux";
+import { useAppSelector } from "@hooks/redux";
 
 export const InfoSticker = () => {
   const { isSelected } = useAppSelector((state) => state.locationSlice);

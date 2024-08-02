@@ -1,15 +1,7 @@
-import React, { FC } from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-  Box,
-  Typography,
-} from "@mui/material";
+import { FC } from "react";
+import { Typography } from "@mui/material";
 import LeakAddIcon from "@mui/icons-material/LeakAdd";
-import { useAppSelector } from "@hooks/redux";
+
 import { IDev } from "@src/types/IDev";
 import { useStyles } from "@hooks/useStyles";
 

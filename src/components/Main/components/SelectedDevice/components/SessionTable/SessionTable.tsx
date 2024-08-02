@@ -4,7 +4,6 @@ import {
   Box,
   TableHead,
   Paper,
-  TableFooter,
   TablePagination,
   Table,
   TableBody,
@@ -13,7 +12,6 @@ import {
   TableRow,
   CircularProgress,
   Alert,
-  Checkbox,
 } from "@mui/material";
 import BatteryChargingFullIcon from "@mui/icons-material/BatteryChargingFull";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
@@ -53,7 +51,7 @@ export const SessionTable: FC<Props> = ({
   const [selectedSession, setSelectedSession] = useState<ISession | null>(null);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (_: unknown, newPage: number) => {
     setPage(newPage);
   };
   const handleChangeRowsPerPage = (

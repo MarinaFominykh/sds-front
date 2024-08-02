@@ -1,6 +1,5 @@
-import React, { useState, useMemo, FC } from "react";
+import { useState, FC } from "react";
 import {
-  Box,
   FormControl,
   Select,
   MenuItem,
@@ -96,7 +95,7 @@ export const SelectWithSearch: FC<Props> = ({
           </MenuItem>
         )}
 
-        {displayedOptions.map((option, i) => (
+        {displayedOptions.map((option, _) => (
           <MenuItem
             key={option.id}
             value={option.id}

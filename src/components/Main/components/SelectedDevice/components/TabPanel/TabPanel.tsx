@@ -1,4 +1,3 @@
-import React from "react";
 import { TabPanelView } from "./TabPanelView";
 import { useAppSelector } from "@hooks/redux";
 

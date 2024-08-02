@@ -1,4 +1,3 @@
-import React from "react";
 import { CriticatilyTabView } from "./CriticatilyTabView";
 import { useAppSelector } from "@hooks/redux";
 

@@ -1,13 +1,6 @@
-import {
-  useState,
-  useCallback,
-  ChangeEvent,
-  ReactNode,
-  SyntheticEvent,
-  useEffect,
-} from "react";
+import { useState, useCallback, ChangeEvent } from "react";
 import { SelectChangeEvent } from "@mui/material";
-import { phoneRegex, latRegex } from "@src/utils/regexp";
+
 export interface FormValues {
   [key: string]: string | number | boolean;
 }
@@ -19,7 +12,7 @@ export const useFormValidation = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isValid, setIsValid] = useState(false);
   const [isInValidInput, setIsInValidInput] = useState({});
-  const [isValidForm, setIsValidForm] = useState(false);
+  const [isValidForm, _] = useState(false);
 
   const handleChange = (
     event: ChangeEvent<

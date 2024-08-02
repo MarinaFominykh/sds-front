@@ -4,7 +4,7 @@ import { ScreenRoute } from "@src/types/Screen.routes.enum";
 import { ExchangePageContainer } from "./ExchangePageContainer";
 import { ProtectedRoute } from "@components/ProtectedRoute";
 import { MainPage } from "@src/pages/MainPage";
-import { WellsPage } from "@src/pages/WellsPage/WellsPage";
+import { WellsPage } from "@src/pages/WellsPage";
 import { UsersPage } from "@src/pages/UsersPage";
 import { LoginPage } from "@src/pages/LoginPage";
 import { Layout } from "@components/Layout";

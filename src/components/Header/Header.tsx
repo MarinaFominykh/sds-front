@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useState } from "react";
+
 import { useAuth } from "@hooks/useAuth";
 import {
   AppBar,
@@ -8,12 +8,10 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  Button,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { SideBar } from "@components/SideBar";
-import { useAppSelector, useAppDispatch } from "@hooks/redux";
 import { useStyles } from "@hooks/useStyles";
 import { useModal } from "@hooks/useModal";
 import { Modal } from "@components/_shared/Modal";
@@ -24,7 +22,6 @@ export const Header = () => {
   const cx = useStyles(styles);
   const [openSideBar, setOpenSideBar] = useState(false);
   const [open, openModal, closeModal] = useModal();
-  const { variant } = useAppSelector((state) => state.modalSlice);
 
   const toggleSideBar = (newOpen: boolean) => {
     setOpenSideBar(newOpen);

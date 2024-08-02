@@ -65,7 +65,7 @@ export const DragDropFileUpload: React.FC<DragDropFileUploadProps> = ({
   const handleFileChange = (file: File) => {
     setLoading(true);
     const reader = new FileReader();
-    reader.onloadend = (event) => {
+    reader.onloadend = () => {
       setLoading(false);
 
       setFileName(file.name);

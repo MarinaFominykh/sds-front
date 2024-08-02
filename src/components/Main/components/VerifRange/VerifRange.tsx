@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import moment from "moment";
 import { useStyles } from "@hooks/useStyles";

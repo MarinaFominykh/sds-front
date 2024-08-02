@@ -1,8 +1,6 @@
-import React, { useState, FC, ChangeEvent } from "react";
-import { FilledInput, TextField, IconButton } from "@mui/material";
-import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
-import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import { FC, ChangeEvent } from "react";
+import { TextField } from "@mui/material";
+
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";
 

@@ -9,6 +9,7 @@ import { jobAPI } from "./services/jobsApi";
 import { locationAPI } from "./services/locacationApi";
 import { devAPI } from "./services/devsApi";
 import { schemeAPI } from "./services/schemeApi";
+import { wellApi } from "./services/wellApi";
 import userSlice from "./reducers/UserSlice";
 import modalSlice from "./reducers/ModalSlice";
 import locationSlice from "./reducers/locationSlice";
@@ -27,6 +28,7 @@ const store = configureStore({
     [locationAPI.reducerPath]: locationAPI.reducer,
     [devAPI.reducerPath]: devAPI.reducer,
     [schemeAPI.reducerPath]: schemeAPI.reducer,
+    [wellApi.reducerPath]: wellApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -40,6 +42,7 @@ const store = configureStore({
       locationAPI.middleware,
       devAPI.middleware,
       schemeAPI.middleware,
+      wellApi.middleware,
     ]),
 });
 

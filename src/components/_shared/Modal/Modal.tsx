@@ -1,13 +1,6 @@
-import React, { FC, ReactNode } from "react";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Button,
-} from "@mui/material";
-import { useAppSelector, useAppDispatch } from "@hooks/redux";
+import { FC } from "react";
+import { Dialog, DialogContent, DialogTitle } from "@mui/material";
+import { useAppSelector } from "@hooks/redux";
 import { useStyles } from "@hooks/useStyles";
 import { eVariantModal } from "@src/types/EvariantModal";
 import { NewUser } from "@components/Modals/NewUser";
@@ -34,9 +27,7 @@ interface Props {
 }
 export const Modal: FC<Props> = ({ open, handleClose }) => {
   const cx = useStyles(styles);
-  const { variant, title, subVariant } = useAppSelector(
-    (state) => state.modalSlice
-  );
+  const { variant, title } = useAppSelector((state) => state.modalSlice);
   const variantModalRender = () => {
     if (variant === eVariantModal.newUser) {
       return <NewUser handleClose={handleClose} />;

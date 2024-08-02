@@ -1,17 +1,14 @@
-import React, { useEffect } from "react";
 import { YMaps, Map as MapComponent, Placemark } from "@pbe/react-yandex-maps";
 import { Link } from "@mui/material";
 import DirectionsIcon from "@mui/icons-material/Directions";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useAppSelector } from "@hooks/redux";
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";
 
 export const Map = () => {
   const cx = useStyles(styles);
   const navigate = useNavigate();
-  const { selectedLocation } = useAppSelector((state) => state.locationSlice);
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams, _] = useSearchParams();
   const goBack = () => {
     navigate(-1);
   };

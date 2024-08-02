@@ -1,14 +1,12 @@
-import React, { useState, MouseEvent } from "react";
+import { useState, MouseEvent } from "react";
 import { AboutDevPanelView } from "./AboutDevPanelView";
 import { Modal } from "@components/_shared/Modal";
 import { useAppSelector, useAppDispatch } from "@hooks/redux";
 import { useModal } from "@hooks/useModal";
-import { IDev } from "@src/types/IDev";
 import { eVariantModal } from "@src/types/EvariantModal";
 import { setVariant } from "@src/redux/reducers/ModalSlice";
 
-interface Props {}
-export const AboutDevPanel = (props: Props) => {
+export const AboutDevPanel = () => {
   const dispatch = useAppDispatch();
   const { selectedDev } = useAppSelector((state) => state.devSlice);
   const { locations } = useAppSelector((state) => state.locationSlice);

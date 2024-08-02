@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, FC } from "react";
+import { SyntheticEvent, FC } from "react";
 import { Select } from "@components/_shared/Inputs/Select";
 import { SelectChangeEvent, MenuItem, Alert } from "@mui/material";
 
@@ -38,8 +38,6 @@ export const MoveDeviceView: FC<Props> = (props) => {
     isErrorSave,
     isSuccessSave,
     isDisabled,
-
-    ...other
   } = props;
   const cx = useStyles(styles);
   return (

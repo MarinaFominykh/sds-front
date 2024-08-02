@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC, FormEvent } from "react";
+import { useState, useEffect, FC, FormEvent } from "react";
 import { SelectChangeEvent } from "@mui/material";
 import { MoveDeviceView } from "./MoveDeviceView";
 import { useAppSelector, useAppDispatch } from "@hooks/redux";
@@ -9,6 +9,7 @@ import { useGetAllOrgsQuery } from "@src/redux/services/orgApi";
 import { useEditDevMutation } from "@src/redux/services/devsApi";
 import { IOrg } from "@src/types/IOrg";
 import { IDev } from "@src/types/IDev";
+import { ILocation } from "@src/types/ILocation";
 
 interface Props {
   handleClose: () => void;
@@ -32,7 +33,9 @@ export const MoveDevice: FC<Props> = ({ handleClose }) => {
   };
   const handleSelectChange = (event: SelectChangeEvent) => {
     const { name, value } = event.target;
-    dispatch(setSelectedLocation({ ...selectedLocation, [name]: value }));
+    dispatch(
+      setSelectedLocation({ ...(selectedLocation as ILocation), [name]: value })
+    );
   };
   const handleSelectLocation = (id: string | null) => {
     if (id)

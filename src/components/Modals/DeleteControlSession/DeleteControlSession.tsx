@@ -1,7 +1,7 @@
-import React, { useState, useEffect, FC, FormEvent } from "react";
+import { useState, useEffect, FC, FormEvent } from "react";
 import { DeleteControlSessionView } from "./DeleteControlSessionView";
 import { useRemoveControlSessMutation } from "@src/redux/services/devsApi";
-import { useAppSelector, useAppDispatch } from "@hooks/redux";
+import { useAppSelector } from "@hooks/redux";
 import { setSelectedDev } from "@src/redux/reducers/devSlice";
 import { IDev } from "@src/types/IDev";
 
@@ -9,7 +9,6 @@ interface Props {
   handleClose: () => void;
 }
 export const DeleteControlSession: FC<Props> = ({ handleClose }) => {
-  const dispatch = useAppDispatch();
   const [message, setMessage] = useState("");
   const { selectedDev } = useAppSelector((state) => state.devSlice);
   const [

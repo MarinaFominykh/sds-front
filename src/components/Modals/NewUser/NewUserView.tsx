@@ -1,4 +1,4 @@
-import React, {
+import {
   FC,
   ChangeEvent,
   SetStateAction,
@@ -15,10 +15,8 @@ import {
   Button as ButtonMui,
   Stack,
 } from "@mui/material";
-import { phoneRegex, latRegex } from "@src/utils/regexp";
 import { InputText } from "@components/_shared/Inputs/InputText";
-import TelInput from "@components/_shared/Inputs/TelInput/TelInput";
-import { RadioButton } from "@components/_shared/RadioButton";
+
 import { Button } from "@components/_shared/Button";
 import { Select } from "@components/_shared/Inputs/Select";
 import { Switch } from "@components/_shared/Switch";

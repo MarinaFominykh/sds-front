@@ -1,4 +1,4 @@
-import React, { FC, MouseEvent, useState } from "react";
+import { FC, MouseEvent } from "react";
 import { TextareaAutosize, IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { InputText } from "@components/_shared/Inputs/InputText";

@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import Button from "@mui/material/Button";
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";

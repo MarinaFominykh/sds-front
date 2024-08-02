@@ -1,5 +1,5 @@
 import { FormValues } from "@hooks/useFormWithValidation";
-import { create } from "@mui/material/styles/createTransitions";
+
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ECOMMAND } from "@src/types/ECommand";
 import { IResponse } from "@src/types/IResponse";
@@ -24,7 +24,7 @@ export const devAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.GETALLDEVS, args),
       }),
-      providesTags: (result) => ["dev"],
+      providesTags: () => ["dev"],
     }),
     getDevsByLocationId: build.query({
       query: (args) => ({
@@ -32,7 +32,7 @@ export const devAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.GETDEVSBYLOCATIONID, args),
       }),
-      providesTags: (result) => ["dev"],
+      providesTags: () => ["dev"],
     }),
     createDev: build.mutation<IResponse, FormValues>({
       query: (args) => ({
@@ -40,7 +40,7 @@ export const devAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.SETDEV, args),
       }),
-      invalidatesTags: (result) => ["dev"],
+      invalidatesTags: () => ["dev"],
     }),
     createDevs: build.mutation<IResponse, FormValues[]>({
       query: (args) => ({
@@ -48,7 +48,7 @@ export const devAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.SETDEVS, args),
       }),
-      invalidatesTags: (result) => ["dev"],
+      invalidatesTags: () => ["dev"],
     }),
     editDev: build.mutation<IResponse, FormValues>({
       query: (args) => ({
@@ -56,7 +56,7 @@ export const devAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.CHANGEDEV, args),
       }),
-      invalidatesTags: (result) => ["dev"],
+      invalidatesTags: () => ["dev"],
     }),
     getAllLastSess: build.query({
       query: (args) => ({
@@ -64,7 +64,7 @@ export const devAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.GETALLLASTSESS, args),
       }),
-      providesTags: (result) => ["lastSessions"],
+      providesTags: () => ["lastSessions"],
     }),
     getLastSess: build.query({
       query: (args) => ({
@@ -72,7 +72,7 @@ export const devAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.GETLASTSESS, args),
       }),
-      providesTags: (result) => ["lastSession"],
+      providesTags: () => ["lastSession"],
     }),
     getControlSess: build.query({
       query: (args) => ({
@@ -80,7 +80,7 @@ export const devAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.GETCONTROLSESS, args),
       }),
-      providesTags: (result) => ["controlSession"],
+      providesTags: () => ["controlSession"],
     }),
     createControlSess: build.mutation<IResponse, FormValues>({
       query: (args) => ({
@@ -88,7 +88,7 @@ export const devAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.SETCONTROLSESS, args),
       }),
-      invalidatesTags: (result) => ["controlSession"],
+      invalidatesTags: () => ["controlSession"],
     }),
     removeControlSess: build.mutation<IResponse, FormValues>({
       query: (args) => ({
@@ -96,7 +96,7 @@ export const devAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.DELETECONTROLSESS, args),
       }),
-      invalidatesTags: (result) => ["controlSession"],
+      invalidatesTags: () => ["controlSession"],
     }),
     getVerifRange: build.query({
       query: (args) => ({
@@ -104,7 +104,7 @@ export const devAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.GETVERIFRANGE, args),
       }),
-      providesTags: (result) => ["verifRange"],
+      providesTags: () => ["verifRange"],
     }),
     createVerifRange: build.mutation<IResponse, FormValues>({
       query: (args) => ({
@@ -112,7 +112,7 @@ export const devAPI = createApi({
         method: "POST",
         body: createBodyQuery(ECOMMAND.SETVERIFRANGE, args),
       }),
-      invalidatesTags: (result) => ["verifRange"],
+      invalidatesTags: () => ["verifRange"],
     }),
     getSelectedDevSessionByPeriod: build.query({
       query: (args) => ({

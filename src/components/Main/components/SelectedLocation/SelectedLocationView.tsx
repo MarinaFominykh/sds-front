@@ -1,18 +1,14 @@
-import React, { FC, MouseEvent, ChangeEvent } from "react";
-import { TextareaAutosize, IconButton } from "@mui/material";
+import { FC, MouseEvent } from "react";
+import { IconButton } from "@mui/material";
 import DirectionsIcon from "@mui/icons-material/Directions";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { InputText } from "@components/_shared/Inputs/InputText";
-import { Modal } from "@components/_shared/Modal";
-import { BigButton } from "@components/_shared/BigButton";
 import { Scheme } from "./components/Scheme";
 import { EditLocationMenu } from "./components/EditLocationMenu";
 import { ScreenRoute } from "@src/types/Screen.routes.enum";
-
 import { eVariantModal } from "@src/types/EvariantModal";
 import { ILocation } from "@src/types/ILocation";
 import { Link } from "react-router-dom";
-
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";
 import sharedStyles from "../../../../assets/styles/shared.module.scss";

@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent } from "react";
+import { useState, MouseEvent } from "react";
 import { SelectedUserView } from "./SelectedUserView";
 import { useAppDispatch, useAppSelector } from "@hooks/redux";
 import { useModal } from "@hooks/useModal";

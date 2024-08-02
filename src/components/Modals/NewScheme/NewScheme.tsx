@@ -1,9 +1,10 @@
-import React, { useState, ChangeEvent, FormEvent, FC, useEffect } from "react";
+import { useState, FormEvent, FC, useEffect } from "react";
 import { NewSchemeView } from "./NewSchemeView";
-import { useFormValidation } from "@hooks/useFormWithValidation";
+
 import { useAppSelector, useAppDispatch } from "@hooks/redux";
 import { useCreateSchemeMutation } from "@src/redux/services/schemeApi";
 import { setSelectedLocation } from "@src/redux/reducers/locationSlice";
+import { ILocation } from "@src/types/ILocation";
 
 interface Props {
   handleClose: () => void;
@@ -14,8 +15,7 @@ export const NewScheme: FC<Props> = ({ handleClose }) => {
   const { newScheme, selectedLocation } = useAppSelector(
     (state) => state.locationSlice
   );
-  const [createScheme, { isError, isLoading, isSuccess }] =
-    useCreateSchemeMutation();
+  const [createScheme, { isError, isSuccess }] = useCreateSchemeMutation();
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     if (newScheme && selectedLocation?.id) {
@@ -38,7 +38,12 @@ export const NewScheme: FC<Props> = ({ handleClose }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setSelectedLocation({ ...selectedLocation, svg: newScheme }));
+      dispatch(
+        setSelectedLocation({
+          ...(selectedLocation as ILocation),
+          svg: newScheme,
+        })
+      );
 
       setTimeout(() => {
         handleClose();

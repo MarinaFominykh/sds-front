@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { SchemeView } from "./SchemeView";
 import { useAppSelector } from "@hooks/redux";
 

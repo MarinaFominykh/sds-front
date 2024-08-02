@@ -1,17 +1,10 @@
-import React, { FC, ReactNode, ElementType } from "react";
-import moment from "moment";
+import { FC } from "react";
+
 import { TreeItem } from "@mui/x-tree-view";
 import FolderIcon from "@mui/icons-material/Folder";
-import FolderZipIcon from "@mui/icons-material/FolderZip";
 import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { ILocation } from "@src/types/ILocation";
-import CrisisAlertIcon from "@mui/icons-material/CrisisAlert";
-import { IDev } from "@src/types/IDev";
-
-import { useStyles } from "@hooks/useStyles";
-
-import styles from "./styles.module.scss";
 
 interface Props {
   location: ILocation;
@@ -19,7 +12,6 @@ interface Props {
 }
 
 export const LocationItem: FC<Props> = ({ location, isLoading }) => {
-  const cx = useStyles(styles);
   const getExpandIcon = () => {
     return location?.subLocations?.length !== 0
       ? KeyboardArrowRightRoundedIcon

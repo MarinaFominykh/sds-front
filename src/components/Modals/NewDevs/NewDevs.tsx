@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, useMemo, useEffect, FC } from "react";
+import { FormEvent, useState, useMemo, useEffect, FC } from "react";
 import { NewDevsView } from "./NewDevsView";
 import { useAppSelector } from "@hooks/redux";
 import { useCreateDevsMutation } from "@src/redux/services/devsApi";
@@ -51,7 +51,7 @@ export const NewDevs: FC<Props> = ({ handleClose }) => {
     });
 
     if (filterRows?.length) {
-      const preventArgs = filterRows?.map((row, index) => {
+      const preventArgs = filterRows?.map((row) => {
         setValidDevs([...validDevs, String(row[0])]);
         m1 = row.slice(5);
         array_senssors = m1;

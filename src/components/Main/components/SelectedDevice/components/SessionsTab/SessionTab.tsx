@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, useEffect } from "react";
+import { FormEvent, useState, useEffect } from "react";
 import { SessonsTabView } from "./SessonsTabView";
 import { useFormValidation } from "@hooks/useFormWithValidation";
 import { useAuth } from "@hooks/useAuth";

@@ -1,24 +1,12 @@
-import React, { FC, ChangeEvent } from "react";
-import {
-  SelectChangeEvent,
-  TextareaAutosize,
-  MenuItem,
-  Alert,
-  Divider,
-  Stack,
-  Button as ButtonMui,
-} from "@mui/material";
+import { FC, ChangeEvent } from "react";
+import { TextareaAutosize, Alert } from "@mui/material";
 import { InputText } from "@components/_shared/Inputs/InputText";
 import { Button } from "@components/_shared/Button";
-import { Select } from "@components/_shared/Inputs/Select";
-
 import { RadioButton } from "@components/_shared/RadioButton";
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";
 import { IUser } from "@src/types/IUser";
-import { FormErrors, FormValues } from "@hooks/useFormWithValidation";
-import { IOrg } from "@src/types/IOrg";
-import { IJob } from "@src/types/IJob";
+import { FormErrors } from "@hooks/useFormWithValidation";
 import { SAVE_ERROR, SAVE_SUCCESS } from "@src/utils/messages";
 
 interface Props {
@@ -47,7 +35,6 @@ export const EditUserView: FC<Props> = ({
   //values,
   message,
   handleChange,
-  handleChecked,
   //handleSelectChange,
   errors,
   isValidForm,

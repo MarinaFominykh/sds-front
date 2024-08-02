@@ -1,6 +1,5 @@
 import { IUser } from "@src/types/IUser";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { act } from "react";
 
 interface UserState {
   user: IUser | null;

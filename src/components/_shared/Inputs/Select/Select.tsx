@@ -1,4 +1,4 @@
-import { ReactNode, FC, SyntheticEvent, ChangeEvent } from "react";
+import { ReactNode, FC, SyntheticEvent } from "react";
 import { SelectChangeEvent } from "@mui/material";
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";

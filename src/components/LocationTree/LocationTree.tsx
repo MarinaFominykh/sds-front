@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, FC } from "react";
+import { useState, useEffect, useMemo, FC } from "react";
 
 import { LocationTreeView } from "./LocationTreeView";
 import { Alert } from "@mui/material";
@@ -12,7 +12,7 @@ import {
 import { useGetAllLocationQuery } from "@src/redux/services/locacationApi";
 import {
   useGetAllDevsQuery,
-  useGetAllLasSessQuery,
+  useGetAllLastSessQuery,
 } from "@src/redux/services/devsApi";
 
 import { useAuth } from "@hooks/useAuth";
@@ -32,7 +32,7 @@ export const LocationTree: FC<Props> = (props) => {
 
   const { data: locs, isLoading, isError } = useGetAllLocationQuery({});
   const { data: devs } = useGetAllDevsQuery({});
-  const { data: lastSessions } = useGetAllLasSessQuery({});
+  const { data: lastSessions } = useGetAllLastSessQuery({});
   const [isAdmin, setIsAdmin] = useState(false);
 
   // const handleSelectLocation = (id: string | null) => {
