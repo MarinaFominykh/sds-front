@@ -18,12 +18,7 @@ export const LocationTree: FC<Props> = (props) => {
   const { locationsTree } = useAppSelector((state) => state.locationSlice);
 
   useEffect(() => {
-    const filteredLocations = locationsTree?.filter(
-      (item) =>
-        item.org_id === selectedLocation?.org_id &&
-        item.id !== selectedLocation?.id
-    );
-    setCurrenLocations(filteredLocations);
+    setCurrenLocations(locationsTree);
   }, [locationsTree, selectedLocation]);
 
   return (

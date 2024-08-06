@@ -11,13 +11,14 @@ import {
 import { SelectChangeEvent } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { containsText } from "@src/utils/functions";
+import { ILocOption } from "@src/types/ILocOption";
 
 type Option = {
   [key: string]: string;
 };
 interface Props {
   name: string;
-  options: Option[];
+  options: any[];
   label: string;
   isDisabled?: boolean;
   onChange?: (e: SelectChangeEvent) => void;
@@ -26,6 +27,7 @@ interface Props {
   onClose?: () => void;
   isDev?: boolean;
   displayEmpty?: boolean;
+  required?: boolean;
 }
 
 export const SelectWithSearch: FC<Props> = ({
@@ -39,11 +41,13 @@ export const SelectWithSearch: FC<Props> = ({
   onClose,
   isDev,
   displayEmpty = false,
+  required = false,
 }) => {
   const [searchText, setSearchText] = useState("");
   const displayedOptions = options.filter((option) =>
-    containsText(option?.g_name, searchText)
+    containsText(option?.name, searchText)
   );
+
   const handleClose = () => {
     setSearchText("");
     onClose?.();
@@ -59,6 +63,7 @@ export const SelectWithSearch: FC<Props> = ({
       <InputLabel sx={{ fontSize: "12px" }}>{label}</InputLabel>
       <Select
         name={name}
+        required={required}
         MenuProps={{ autoFocus: false }}
         sx={{ fontSize: "12px" }}
         value={value}
@@ -105,7 +110,7 @@ export const SelectWithSearch: FC<Props> = ({
               pl: `${option.parent_id === "0" ? "16px" : "32px"}`,
             }}
           >
-            {option.g_name}
+            {option.name}
           </MenuItem>
         ))}
       </Select>

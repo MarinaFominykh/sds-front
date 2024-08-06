@@ -18,6 +18,7 @@ import { EditDev } from "@components/Modals/EditDev";
 import { MoveDevice } from "@components/Modals/MoveDevice";
 import { NewVerifRange } from "@components/Modals/NewVerifRange/NewVerifRange";
 import { DeleteControlSession } from "@components/Modals/DeleteControlSession";
+import { NewWell } from "@components/Modals/NewWell";
 import { CloseButton } from "../CloseButton";
 import { Typography } from "../Typography";
 import styles from "./styles.module.scss";
@@ -59,6 +60,8 @@ export const Modal: FC<Props> = ({ open, handleClose }) => {
       return <NewVerifRange handleClose={handleClose} />;
     } else if (variant === eVariantModal.deleteControlSession) {
       return <DeleteControlSession handleClose={handleClose} />;
+    } else if (variant === eVariantModal.newWell) {
+      return <NewWell handleClose={handleClose} />;
     }
   };
 

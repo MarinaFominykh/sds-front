@@ -1,5 +1,7 @@
 import { IQuery } from "@src/types/IQuery";
 import { ECOMMAND } from "@src/types/ECommand";
+import { ILocation } from "@src/types/ILocation";
+import { ILocOption } from "@src/types/ILocOption";
 
 type TArgs = {
   //[key: string]: string | number | boolean;
@@ -17,7 +19,36 @@ export const createBodyQuery = (command: ECOMMAND, args: TArgs | TArgs[]) => {
 };
 
 export const containsText = (text: string, searchText: string) =>
-  text.toLowerCase().indexOf(searchText.toLowerCase()) > -1;
+  text?.toLowerCase().indexOf(searchText.toLowerCase()) > -1;
 export const getDigitalStr = (str: string) => {
   return str.replace(/[^\d\.,]/g, "").replace(/,/g, ".");
+};
+
+// Options для списка с расположением
+export const getLocOptions = (locations: ILocation[]) => {
+  let allLocations: any[] = [];
+  const recursion = (arr: ILocation[]) => {
+    arr.forEach((item) => {
+      if (item.subLocations?.length > 0) {
+        recursion(item.subLocations);
+      }
+
+      allLocations = [
+        ...allLocations,
+        {
+          id: item.id,
+          g_name: item.g_name,
+          parent_id: item.parent_id,
+          org_id: item.org_id,
+        },
+      ];
+    });
+    // const groups = arr.reduce((acc, { group: { g_name, id } }) => {
+    //   return [...acc, { id, name: g_name }];
+    // }, []);
+    // setGroup(groups);
+  };
+  recursion(locations);
+
+  return allLocations.reverse();
 };

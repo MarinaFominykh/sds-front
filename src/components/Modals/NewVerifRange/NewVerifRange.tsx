@@ -37,7 +37,7 @@ export const NewVerifRange: FC<Props> = ({ handleClose }) => {
   const addNewVerifRange = (event: FormEvent) => {
     event.preventDefault();
     const args = generateArgs();
-    console.log("args", args);
+
     createVerifRange(args);
   };
   const isSuccessSave = () => {

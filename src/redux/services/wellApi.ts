@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ECOMMAND } from "@src/types/ECommand";
+import { IResponse } from "@src/types/IResponse";
 import { createBodyQuery } from "@src/utils/functions";
+import { FormValues } from "@hooks/useFormWithValidation";
 
 export const wellApi = createApi({
   reducerPath: "well",
@@ -17,7 +19,27 @@ export const wellApi = createApi({
       }),
       providesTags: ["well"],
     }),
+    createWell: build.mutation<IResponse, FormValues>({
+      query: (args) => ({
+        url: "/api",
+        method: "POST",
+        body: createBodyQuery(ECOMMAND.SETWELL, args),
+      }),
+      invalidatesTags: () => ["well"],
+    }),
+    editWell: build.mutation<IResponse, FormValues>({
+      query: (args) => ({
+        url: "/api",
+        method: "POST",
+        body: createBodyQuery(ECOMMAND.CHANGEWELL, args),
+      }),
+      invalidatesTags: () => ["well"],
+    }),
   }),
 });
 
-export const { useGetAllWellsQuery } = wellApi;
+export const {
+  useGetAllWellsQuery,
+  useCreateWellMutation,
+  useEditWellMutation,
+} = wellApi;

@@ -7,7 +7,6 @@ import { useAppDispatch, useAppSelector } from "@hooks/redux";
 import {
   setSelectedLocation,
   setLocations,
-  setLocationsTree,
   setIsSelected,
   setIsLoadingScheme,
 } from "@src/redux/reducers/locationSlice";
@@ -17,18 +16,12 @@ import { useGetAllOrgsQuery } from "@src/redux/services/orgApi";
 import { useGetAllLocationQuery } from "@src/redux/services/locacationApi";
 import {
   useGetAllDevsQuery,
-  useGetAllLastSessQuery,
   useGetControlSessQuery,
   useGetLastSessQuery,
 } from "@src/redux/services/devsApi";
-import { useGetAllWellsQuery } from "@src/redux/services/wellApi";
-
 import { useAuth } from "@hooks/useAuth";
 import { ILocation } from "@src/types/ILocation";
-
 import { IDev } from "@src/types/IDev";
-import { ISession } from "@src/types/ISession";
-import { IWell } from "@src/types/IWell";
 import { api } from "@api/api";
 import { createBodyQuery } from "@src/utils/functions";
 import { ECOMMAND } from "@src/types/ECommand";
@@ -36,15 +29,17 @@ import { ECOMMAND } from "@src/types/ECommand";
 export const LocationTree = () => {
   const auth = useAuth();
   const dispatch = useAppDispatch();
-  const { locations: locationArr, selectedLocation: currentLocation } =
-    useAppSelector((state) => state.locationSlice);
+  const {
+    locations: locationArr,
+    selectedLocation: currentLocation,
+    locationsTree,
+  } = useAppSelector((state) => state.locationSlice);
   const { isVisibleDevice, selectedDev } = useAppSelector(
     (state) => state.devSlice
   );
   const { data: orgs } = useGetAllOrgsQuery({});
   const { data: locs, isLoading, isError } = useGetAllLocationQuery({});
   const { data: devs } = useGetAllDevsQuery({});
-  const { data: wells } = useGetAllWellsQuery({});
   const { data: controlSession } = useGetControlSessQuery(
     { dev_number: selectedDev?.number },
     { skip: !isVisibleDevice }
@@ -53,10 +48,7 @@ export const LocationTree = () => {
     { dev_number: selectedDev?.number },
     { skip: !isVisibleDevice }
   );
-  const { data: lastSessions } = useGetAllLastSessQuery({});
   const [isAdmin, setIsAdmin] = useState(false);
-  // const [id, setId] = useState("0");
-  //const { data: scheme } = useGetSchemeQuery({ id_devs_groups: id });
 
   const handleSelectLocation = (id: string) => {
     // Проверяем: если выбрана та же локация, то ничего не делаем, чтобы не было повторного рендеринга компонента SelectedLocation
@@ -117,119 +109,20 @@ export const LocationTree = () => {
     }
   }, [controlSession, lastSession]);
 
-  //Добавляем в выбранное устройство последнюю сессию, когда приходят данные о последней сессии
-  // useEffect(() => {
-  //   if (isVisibleDevice) {
-  //     dispatch(
-  //       setSelectedDev({
-  //         ...(selectedDev as IDev),
-  //         last_sess: lastSession?.data?.[0],
-  //       })
-  //     );
-  //   }
-  // }, [lastSession]);
-
-  // Фильтрация массива с сессиями: оставляем по одной последней сессии для каждого устройства
-  function filterUniqueMaxId(sessions: ISession[]) {
-    interface UniqueDevs {
-      [key: string]: ISession;
-    }
-    const uniqueDevs: UniqueDevs = {};
-    sessions?.forEach((obj) => {
-      const { dev_number } = obj;
-      const id = Number(obj.id);
-      if (
-        !(dev_number in uniqueDevs) ||
-        id > Number(uniqueDevs[dev_number].id)
-      ) {
-        uniqueDevs[dev_number] = obj;
-      }
-    });
-
-    return Object.values(uniqueDevs);
-  }
-
-  // Добавляем поле с последней сессии в массив устройств, который приходит с сервера
-  function addTimeInDev(devs: IDev[], sessions: ISession[]) {
-    return devs?.map((dev: IDev) => {
-      return {
-        ...dev,
-        time: sessions.find((sess) => sess.dev_id === dev.id)?.time_srv,
-      };
-    });
-  }
-
-  // Преобразуем массив с локациями в древовидную структуру
-  function buildTree(items: ILocation[], devs: IDev[], wells: IWell[]) {
-    const map = new Map();
-    const tree: ILocation[] = [];
-
-    const newItems = items?.map((item) => {
-      return {
-        ...item,
-        devs: devs?.filter((dev: IDev) => dev.group_dev_id === item.id),
-        wells: wells?.filter((well: IWell) => well.group_id === item.id),
-      };
-    });
-    newItems?.forEach((item) => {
-      map.set(item.id, { ...item, subLocations: [] });
-    });
-
-    map.forEach((item) => {
-      if (item.parent_id !== "0") {
-        const parentItem = map.get(item.parent_id);
-        if (parentItem) {
-          parentItem.subLocations.push(item);
-        }
-      } else {
-        tree.push(item);
-      }
-    });
-
-    return tree;
-  }
-
   useEffect(() => {
     // Если у пользователя есть права редактирования:
     if (auth && "user" in auth && auth?.user?.roles_ids.roles[1] === 2)
       setIsAdmin(true);
   }, [auth?.user]);
 
-  //Мемоизированное значение массива с уникальными сессиями
-  const allSessions = useMemo(
-    () => filterUniqueMaxId(lastSessions?.data),
-    [lastSessions?.data]
-  );
-  // Мемоизированное значение массива устройств с добавленным полем time
-  const devsWithSessions = useMemo(
-    () => addTimeInDev(devs?.data, allSessions),
-    [devs?.data, allSessions]
-  );
-
-  // Мемоизированное значение массива с локациями в виде дерева
-  const locations = useMemo(
-    () => buildTree(locs?.data, devsWithSessions, wells?.data),
-    [devs, locs, devsWithSessions, wells]
-  );
-
   // Мемоизированное значение массива с локациями в виде дерева, отфильтрованное для пользователей без прав редактирования
   const filteredLocations = useMemo(
     () =>
-      locations?.filter(
+      locationsTree?.filter(
         (item: ILocation) => item.org_id === auth?.user?.id_org
       ),
-    [locations]
+    [locationsTree]
   );
-  useEffect(() => {
-    if (locs && "data" in locs) {
-      dispatch(setLocations(locs.data));
-    }
-  }, [locs?.data]);
-  useEffect(() => {
-    if (locations) {
-      dispatch(setLocationsTree(locations));
-    }
-  }, [locations]);
 
   useEffect(() => {
     if (devs && "data" in devs) {
@@ -244,7 +137,7 @@ export const LocationTree = () => {
       ) : (
         <LocationTreeView
           // TODO: проверить под пользователем, у которого нет прав редактирования
-          locations={isAdmin ? locations : filteredLocations}
+          locations={isAdmin ? locationsTree : filteredLocations}
           handleClick={handleSelectLocation}
           isLoading={isLoading}
         />
