@@ -1,22 +1,22 @@
 import { FC, ChangeEvent, SyntheticEvent } from "react";
 import { Alert, SelectChangeEvent } from "@mui/material";
-import { LocationTree } from "./components/LocationTree";
-import { InputText } from "@components/_shared/Inputs/InputText";
-import { Button } from "@components/_shared/Button";
-import { Typography } from "@components/_shared/Typography";
-import { SelectWithSearch } from "@components/_shared/Inputs/SelectWithSearch";
-import { SAVE_ERROR, SAVE_SUCCESS } from "@src/utils/messages";
 import { FormErrors, FormValues } from "@hooks/useFormWithValidation";
 import { IDev } from "@src/types/IDev";
+import { Typography } from "@components/_shared/Typography";
+import { InputText } from "@components/_shared/Inputs/InputText";
+import { Button } from "@components/_shared/Button";
+import { LocationTree } from "./components/LocationTree";
+import { SelectWithSearch } from "@components/_shared/Inputs/SelectWithSearch";
+import { SAVE_ERROR, SAVE_SUCCESS } from "@src/utils/messages";
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";
 
 interface Props {
+  locationName: string | undefined;
   handleChange: (
     event: ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >,
-    regexp?: RegExp
+    >
   ) => void;
   handleSelectChange: (event: SelectChangeEvent) => void;
   handleCloseSelect: (
@@ -32,11 +32,12 @@ interface Props {
   isSuccessSave: boolean;
   isErrorSave: boolean;
   isLoading: boolean;
-  isValid: boolean;
 }
-export const NewWellView: FC<Props> = (props) => {
+
+export const EditWellView: FC<Props> = (props) => {
   const cx = useStyles(styles);
   const {
+    locationName,
     handleChange,
     handleSelectChange,
     handleSelectLocation,
@@ -47,7 +48,7 @@ export const NewWellView: FC<Props> = (props) => {
     isSuccessSave,
     isErrorSave,
     isLoading,
-    isValid,
+
     isDisabledDev,
   } = props;
   return (
@@ -57,24 +58,27 @@ export const NewWellView: FC<Props> = (props) => {
           <InputText
             name="number"
             label="Номер скважины"
+            value={(values?.number as string) || ""}
             onChange={handleChange}
             error={Boolean(errors.number)}
             helperText={errors.number}
           />
-
-          {/* <SelectWithSearch
+          <InputText
             name="location"
-            label="Расположение"
-            options={locOptions}
-            onChange={handleSelectChange}
-            onClose={() => {}}
-          /> */}
+            label="Текущее расположение"
+            value={locationName || ""}
+            InputProps={{
+              readOnly: true,
+              style: { fontSize: 12 },
+            }}
+          />
           <Typography className={cx("title")} variant="subtitle1">
             Выберите расположение скважины:
           </Typography>
           <fieldset className={cx("tree")}>
             <LocationTree handleSelectLocation={handleSelectLocation} />
           </fieldset>
+
           <SelectWithSearch
             name="dev_id"
             label="Устройство"
@@ -103,9 +107,7 @@ export const NewWellView: FC<Props> = (props) => {
       )}
 
       <div className={cx("button")}>
-        <Button disabled={!isValid} isLoading={isLoading}>
-          Сохранить
-        </Button>
+        <Button isLoading={isLoading}>Сохранить</Button>
       </div>
     </>
   );

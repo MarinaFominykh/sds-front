@@ -1,6 +1,6 @@
 import { useState, useEffect, FC, FormEvent } from "react";
 import { NewWellView } from "./NewWellView";
-import { FormValues, useFormValidation } from "@hooks/useFormWithValidation";
+import { useFormValidation } from "@hooks/useFormWithValidation";
 import { useGetAllDevsQuery } from "@src/redux/services/devsApi";
 import { useCreateWellMutation } from "@src/redux/services/wellApi";
 import { useGetAllOrgsQuery } from "@src/redux/services/orgApi";
