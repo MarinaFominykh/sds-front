@@ -47,6 +47,8 @@ export enum ECOMMAND {
   SETSCHEME = "set_SchemeSvg",
 
   //---------------------------------Устройства
+  //Получение устройста по id
+  GETDEVBYID = "get_Dev",
   //Получение устройств по id группы
   GETDEVSBYLOCATIONID = "get_Devs",
   //Получение всех устройство

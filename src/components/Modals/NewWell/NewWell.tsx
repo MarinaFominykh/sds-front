@@ -31,11 +31,19 @@ export const NewWell: FC<Props> = ({ handleClose }) => {
     handleSelectChange,
     resetForm,
     setValues,
-    isValid,
+    // isValid,
   } = useFormValidation();
   const handleSelectLocation = (id: string | null) => {
     if (id) setSelectedLocation(id);
     //dispatch(setSelectedLocation({ ...selectedLocation, parent_id: id }));
+  };
+
+  const isValid = () => {
+    return (
+      Boolean(values.number) &&
+      Boolean(values.dev_id) &&
+      Boolean(selectedLocation)
+    );
   };
   const valdidationFormValues = (event: FormEvent) => {
     event.preventDefault();
@@ -96,7 +104,7 @@ export const NewWell: FC<Props> = ({ handleClose }) => {
         errors={errors}
         devOptions={currentDevs}
         message={message}
-        isValid={isValid}
+        isValid={isValid()}
         isSuccessSave={isSuccessSave()}
         isErrorSave={isError}
         isLoading={isLoading}

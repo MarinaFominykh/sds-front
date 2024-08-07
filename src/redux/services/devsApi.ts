@@ -26,6 +26,14 @@ export const devAPI = createApi({
       }),
       providesTags: () => ["dev"],
     }),
+    getDevById: build.query({
+      query: (args) => ({
+        url: "/api",
+        method: "POST",
+        body: createBodyQuery(ECOMMAND.GETDEVBYID, args),
+      }),
+      providesTags: () => ["dev"],
+    }),
     getDevsByLocationId: build.query({
       query: (args) => ({
         url: "/api",
@@ -126,6 +134,7 @@ export const devAPI = createApi({
 
 export const {
   useGetAllDevsQuery,
+  useGetDevByIdQuery,
   useGetDevsByLocationIdQuery,
   useCreateDevMutation,
   useCreateDevsMutation,

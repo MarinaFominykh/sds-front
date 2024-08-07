@@ -41,7 +41,7 @@ export const SelectWithSearch: FC<Props> = ({
   onClose,
   isDev,
   displayEmpty = false,
-  required = false,
+  required = true,
 }) => {
   const [searchText, setSearchText] = useState("");
   const displayedOptions = options.filter((option) =>

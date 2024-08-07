@@ -18,12 +18,14 @@ interface Props {
   locations: ILocation[];
   isLoading: boolean;
   handleSearch: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleClick: (id: string) => void;
 }
 
 export const WellsTreeView: FC<Props> = ({
   locations,
   isLoading,
   handleSearch,
+  handleClick,
 }) => {
   const cx = useStyles(styles);
 
@@ -47,7 +49,7 @@ export const WellsTreeView: FC<Props> = ({
             </IconButton>
           </div>
           <SimpleTreeView
-            onSelectedItemsChange={(e, id) => console.log({ e, id })}
+            onSelectedItemsChange={(_, id) => handleClick(id ?? "")}
           >
             {locations.map((location) => {
               return <WellItem key={location.id} location={location} />;

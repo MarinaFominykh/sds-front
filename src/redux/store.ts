@@ -14,6 +14,7 @@ import userSlice from "./reducers/UserSlice";
 import modalSlice from "./reducers/ModalSlice";
 import locationSlice from "./reducers/locationSlice";
 import devSlice from "./reducers/devSlice";
+import wellSlice from "./reducers/wellSlice";
 
 const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ const store = configureStore({
     modalSlice,
     locationSlice,
     devSlice,
+    wellSlice,
     [mainApi.reducerPath]: mainApi.reducer,
     [userAPI.reducerPath]: userAPI.reducer,
     [orgAPI.reducerPath]: orgAPI.reducer,

@@ -9,6 +9,7 @@ export enum eVariantModal {
   newJob = "newJobsTitle",
   editJob = "editJobsTitle",
   newWell = "newWell",
+  editWell = "editWell",
   newLocation = "newLocation",
   editLocation = "editLocation",
   moveLocation = "moveLocation",
