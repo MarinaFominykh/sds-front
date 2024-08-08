@@ -3,7 +3,6 @@ import { NewWellView } from "./NewWellView";
 import { useFormValidation } from "@hooks/useFormWithValidation";
 import { useGetAllDevsQuery } from "@src/redux/services/devsApi";
 import { useCreateWellMutation } from "@src/redux/services/wellApi";
-import { useGetAllOrgsQuery } from "@src/redux/services/orgApi";
 import { IDev } from "@src/types/IDev";
 import { INVALID_FORM } from "@src/utils/messages";
 import { useAppSelector } from "@hooks/redux";
@@ -19,7 +18,6 @@ export const NewWell: FC<Props> = ({ handleClose }) => {
   const [message, setMessage] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
   const { data } = useGetAllDevsQuery({});
-  const { data: orgs } = useGetAllOrgsQuery({});
   const [createWell, { isError, isLoading, isSuccess, data: response }] =
     useCreateWellMutation({});
   const { locations } = useAppSelector((state) => state.locationSlice);

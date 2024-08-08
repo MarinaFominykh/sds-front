@@ -9,6 +9,7 @@ import { UsersPage } from "@src/pages/UsersPage";
 import { LoginPage } from "@src/pages/LoginPage";
 import { Layout } from "@components/Layout";
 import { MapPage } from "@src/pages/MapPage";
+import { OrgsPage } from "@src/pages/OrgsPage";
 
 interface Props {}
 // type Children = {
@@ -61,6 +62,14 @@ export const ExchangeRoutes: React.FC<Props> = () => {
             element: (
               <ProtectedRoute>
                 <WellsPage />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "organizations",
+            element: (
+              <ProtectedRoute>
+                <OrgsPage />
               </ProtectedRoute>
             ),
           },

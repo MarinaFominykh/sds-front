@@ -5,10 +5,7 @@ import {
   useGetLocationByParentIdQuery,
 } from "@src/redux/services/locacationApi";
 import { useGetAllOrgsQuery } from "@src/redux/services/orgApi";
-import {
-  useGetDevsByLocationIdQuery,
-  useGetDevByIdQuery,
-} from "@src/redux/services/devsApi";
+import { useGetDevByIdQuery } from "@src/redux/services/devsApi";
 import { useAppSelector, useAppDispatch } from "@hooks/redux";
 import {
   setSelectedWell,
@@ -56,7 +53,6 @@ export const WellsTree = () => {
       const well = wells?.data?.find((well: IWell) => well.id === wellId);
 
       if (well) {
-        console.log("this");
         dispatch(setSelectedWell({ ...selectedWell, ...well }));
         dispatch(setIsSelectedWell(true));
         setOrgId(well?.org_id);
@@ -122,11 +118,13 @@ export const WellsTree = () => {
   useEffect(() => {}, [isGetDevice]);
 
   return (
-    <WellsTreeView
-      locations={filteredWells}
-      isLoading={isLoading}
-      handleSearch={handleSearch}
-      handleClick={handleSelectWell}
-    />
+    <>
+      <WellsTreeView
+        locations={filteredWells}
+        isLoading={isLoading}
+        handleSearch={handleSearch}
+        handleClick={handleSelectWell}
+      />
+    </>
   );
 };

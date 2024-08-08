@@ -11,11 +11,7 @@ import {
 import { SelectChangeEvent } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { containsText } from "@src/utils/functions";
-import { ILocOption } from "@src/types/ILocOption";
 
-type Option = {
-  [key: string]: string;
-};
 interface Props {
   name: string;
   options: any[];

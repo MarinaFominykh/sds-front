@@ -9,17 +9,17 @@ interface Props {
   onClose: () => void;
   handleOpenModal: (variant: eVariantModal, title: string) => void;
 }
-export const EditWellMenu: FC<Props> = ({
+export const EditOrgMenu: FC<Props> = ({
   isOpen,
   anchorEl,
   onClose,
   handleOpenModal,
 }) => {
   return (
-    <Menu open={isOpen} id="editWellMenu" anchorEl={anchorEl} onClose={onClose}>
+    <Menu open={isOpen} id="editOrgMenu" anchorEl={anchorEl} onClose={onClose}>
       <MenuItem
         onClick={() =>
-          handleOpenModal(eVariantModal.editWell, "Редактировать скважину")
+          handleOpenModal(eVariantModal.editOrg, "Редактировать организацию")
         }
       >
         <ListItemIcon>

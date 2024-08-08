@@ -6,7 +6,6 @@ import { Alert } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "@hooks/redux";
 import {
   setSelectedLocation,
-  setLocations,
   setIsSelected,
   setIsLoadingScheme,
 } from "@src/redux/reducers/locationSlice";
@@ -38,7 +37,7 @@ export const LocationTree = () => {
     (state) => state.devSlice
   );
   const { data: orgs } = useGetAllOrgsQuery({});
-  const { data: locs, isLoading, isError } = useGetAllLocationQuery({});
+  const { isLoading, isError } = useGetAllLocationQuery({});
   const { data: devs } = useGetAllDevsQuery({});
   const { data: controlSession } = useGetControlSessQuery(
     { dev_number: selectedDev?.number },

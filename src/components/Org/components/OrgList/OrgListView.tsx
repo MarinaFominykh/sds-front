@@ -7,28 +7,21 @@ import {
   IconButton,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { WellItem } from "./WellItem";
-import { ILocation } from "@src/types/ILocation";
-
+import { OrgItem } from "./OrgItem";
+import { IOrg } from "@src/types/IOrg";
 import { useStyles } from "@hooks/useStyles";
 
 import styles from "./styles.module.scss";
 
 interface Props {
-  locations: ILocation[];
-  isLoading: boolean;
-  handleSearch: (event: ChangeEvent<HTMLInputElement>) => void;
+  orgs: IOrg[];
   handleClick: (id: string) => void;
+  handleSearch: (event: ChangeEvent<HTMLInputElement>) => void;
+  isLoading: boolean;
 }
-
-export const WellsTreeView: FC<Props> = ({
-  locations,
-  isLoading,
-  handleSearch,
-  handleClick,
-}) => {
+export const OrgListView: FC<Props> = (props) => {
+  const { orgs, handleClick, handleSearch, isLoading } = props;
   const cx = useStyles(styles);
-
   return (
     <div className={cx("container")}>
       {isLoading ? (
@@ -37,9 +30,8 @@ export const WellsTreeView: FC<Props> = ({
         <>
           <div className={cx("search")}>
             <InputBase
-              // id="search"
               sx={{ ml: 1, flex: 1, fontSize: "14px", pl: "14px" }}
-              placeholder="Поиск по номеру"
+              placeholder="Поиск по названию"
               // inputProps={{ "aria-label": "search google maps" }}
               onChange={handleSearch}
             />
@@ -51,9 +43,9 @@ export const WellsTreeView: FC<Props> = ({
           <SimpleTreeView
             onSelectedItemsChange={(_, id) => handleClick(id ?? "")}
           >
-            {locations.length > 0 ? (
-              locations.map((location) => {
-                return <WellItem key={location.id} location={location} />;
+            {orgs?.length > 0 ? (
+              orgs?.map((org) => {
+                return <OrgItem key={org.id} org={org} />;
               })
             ) : (
               <p className="notfound">Ничего не найдено</p>

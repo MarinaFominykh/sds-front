@@ -5,9 +5,8 @@ import {
   useCreateOrgMutation,
   useGetAllOrgsQuery,
 } from "@src/redux/services/orgApi";
-import { IOrg } from "@src/types/IOrg";
 import { DOUBLE_INN_ERROR, DOUBLE_NAME_ORG_ERROR } from "@src/utils/messages";
-
+import { isInnInArray } from "@src/utils/functions";
 interface Props {
   handleClose: () => void;
 }
@@ -18,13 +17,13 @@ export const NewOrg: FC<Props> = ({ handleClose }) => {
   const { data: orgs } = useGetAllOrgsQuery({});
   const [message, setMessage] = useState("");
 
-  function isInnInArray<T extends keyof IOrg>(
-    orgs: IOrg[],
-    value: string,
-    field: T
-  ) {
-    return orgs.some((org) => org[field] === value);
-  }
+  // function isInnInArray<T extends keyof IOrg>(
+  //   orgs: IOrg[],
+  //   value: string,
+  //   field: T
+  // ) {
+  //   return orgs.some((org) => org[field] === value);
+  // }
 
   const generateArgs = () => {
     const args = {

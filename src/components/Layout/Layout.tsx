@@ -5,8 +5,6 @@ import { useGetAllLocationQuery } from "@src/redux/services/locacationApi";
 import {
   useGetAllDevsQuery,
   useGetAllLastSessQuery,
-  useGetControlSessQuery,
-  useGetLastSessQuery,
 } from "@src/redux/services/devsApi";
 import { useGetAllWellsQuery } from "@src/redux/services/wellApi";
 import { useDispatch } from "react-redux";
@@ -24,7 +22,7 @@ import styles from "./styles.module.scss";
 export const Layout = () => {
   const cx = useStyles(styles);
   const dispatch = useDispatch();
-  const { data: locs, isLoading, isError } = useGetAllLocationQuery({});
+  const { data: locs } = useGetAllLocationQuery({});
   const { data: devs } = useGetAllDevsQuery({});
   const { data: wells } = useGetAllWellsQuery({});
   const { data: lastSessions } = useGetAllLastSessQuery({});

@@ -1,7 +1,7 @@
 import { IQuery } from "@src/types/IQuery";
 import { ECOMMAND } from "@src/types/ECommand";
 import { ILocation } from "@src/types/ILocation";
-import { ILocOption } from "@src/types/ILocOption";
+import { IOrg } from "@src/types/IOrg";
 
 type TArgs = {
   //[key: string]: string | number | boolean;
@@ -52,3 +52,11 @@ export const getLocOptions = (locations: ILocation[]) => {
 
   return allLocations.reverse();
 };
+
+export function isInnInArray<T extends keyof IOrg>(
+  orgs: IOrg[],
+  value: string,
+  field: T
+) {
+  return orgs.some((org) => org[field] === value);
+}

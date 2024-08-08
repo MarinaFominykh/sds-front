@@ -1,24 +1,25 @@
 import { MouseEvent, FC } from "react";
 import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { EditWellMenu } from "../EditWellMenu";
+import { EditOrgMenu } from "../EditOrgMenu";
 import { InputText } from "@components/_shared/Inputs/InputText";
 import { eVariantModal } from "@src/types/EvariantModal";
 import { useStyles } from "@hooks/useStyles";
 import styles from "./styles.module.scss";
-import { ISelectedWell } from "@src/types/IWell";
+
+import { IOrg } from "@src/types/IOrg";
 
 interface Props {
-  well: ISelectedWell;
+  org: IOrg;
   anchorEl: HTMLElement | null;
   handleOpenModal: (variant: eVariantModal, title: string) => void;
   handleClickMenuButton: (event: MouseEvent<HTMLButtonElement>) => void;
   closeMenu: () => void;
   isOpenMenu: boolean;
 }
-export const SelectedWellView: FC<Props> = (props) => {
+export const SelectedOrgView: FC<Props> = (props) => {
   const {
-    well,
+    org,
     anchorEl,
     handleClickMenuButton,
     handleOpenModal,
@@ -32,13 +33,13 @@ export const SelectedWellView: FC<Props> = (props) => {
       <div className={cx("head")}>
         <IconButton
           onClick={handleClickMenuButton}
-          aria-controls={isOpenMenu ? "editWellMenu" : undefined}
+          aria-controls={isOpenMenu ? "editOrgMenu" : undefined}
           aria-haspopup="true"
           aria-expanded={isOpenMenu ? "true" : undefined}
         >
           <MoreVertIcon />
         </IconButton>
-        <EditWellMenu
+        <EditOrgMenu
           anchorEl={anchorEl}
           isOpen={isOpenMenu}
           onClose={closeMenu}
@@ -47,34 +48,44 @@ export const SelectedWellView: FC<Props> = (props) => {
       </div>
       <fieldset className={cx("fields")}>
         <InputText
-          label="Номер скважины"
-          value={well?.number || ""}
+          label="Полное наименование"
+          value={org.full_name || ""}
           InputProps={{
             readOnly: true,
             style: { fontSize: 12 },
           }}
         />
         <InputText
-          label="Расположениe"
-          value={well?.location?.g_name || ""}
+          label="Сокращенное наименование"
+          value={org.name || ""}
           InputProps={{
             readOnly: true,
             style: { fontSize: 12 },
           }}
         />
         <InputText
-          label="Организация"
-          value={well?.org?.full_name || ""}
-          //onChange={handleChange}
+          label="ИНН"
+          value={org.inn || ""}
           InputProps={{
             readOnly: true,
             style: { fontSize: 12 },
           }}
         />
         <InputText
-          label="Устройство"
-          value={well?.device?.name || ""}
-          //onChange={handleChange}
+          label="Адрес"
+          value={org.address || ""}
+          InputProps={{
+            readOnly: true,
+            style: { fontSize: 12 },
+          }}
+        />
+        <InputText
+          name="info"
+          label="Информация"
+          value={org?.info || ""}
+          multiline={true}
+          rows={4}
+          required={false}
           InputProps={{
             readOnly: true,
             style: { fontSize: 12 },

@@ -346,7 +346,7 @@ export const SessionTable: FC<Props> = ({
                   />
                 </>
               ) : (
-                <p className={cx("notfound")}>Ничего не найдено</p>
+                <p className="notfound">Ничего не найдено</p>
               )}
             </>
           )}

@@ -4,20 +4,21 @@
 @import "../../../../assets/styles/reset.scss";
 
 .container {
+  background-color: #ffff;
+  padding: 20px;
+}
+
+.fields {
+  @include fieldset;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: #fff;
-  padding: 20px;
-  box-sizing: border-box;
+  gap: 12px;
+  margin-bottom: 16px;
 }
-.search {
-  margin-bottom: 22px;
+
+.head {
   display: flex;
-  align-items: center;
-  box-shadow: none;
-  background-color: $background;
-  border-radius: 4px;
+  justify-content: flex-end;
+  margin-bottom: 12px;
 }
