@@ -4,9 +4,9 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // server: {
-  //   port: 3041,
-  // },
+  server: {
+    port: 3041,
+  },
   resolve: {
     alias: {
       "@": path.resolve("src/*"),
