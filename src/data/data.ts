@@ -65,7 +65,7 @@ export const sideBarLinksData = [
   {
     id: "4",
     title: "Должности",
-    link: ScreenRoute.JOBS,
+    link: ScreenRoute.POSTS,
     icon: WorkOutlineOutlinedIcon,
   },
   {

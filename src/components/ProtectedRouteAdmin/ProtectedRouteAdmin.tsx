@@ -6,20 +6,11 @@ interface Props {
   children?: ReactNode;
 }
 
-export const ProtectedRoute: FC<Props> = ({ children }) => {
+export const ProtectedRouteAdmin: FC<Props> = ({ children }) => {
   const location = useLocation();
   const auth = useAuth();
-  console.log("auth", auth);
-  if (!auth || !auth.user) {
+  if (!auth || !auth.user || auth?.user?.roles_ids.roles[1] !== 2) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
   return children;
 };
-
-//  const auth = useAuth();
-
-//  if (!auth || !auth.user) {
-//    return <Navigate to="/login" replace />;
-//  }
-
-//  return children;

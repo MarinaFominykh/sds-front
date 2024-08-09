@@ -3,6 +3,7 @@ import { Navigate, RouteObject, useRoutes } from "react-router-dom";
 import { ScreenRoute } from "@src/types/Screen.routes.enum";
 import { ExchangePageContainer } from "./ExchangePageContainer";
 import { ProtectedRoute } from "@components/ProtectedRoute";
+import { ProtectedRouteAdmin } from "@components/ProtectedRouteAdmin";
 import { MainPage } from "@src/pages/MainPage";
 import { WellsPage } from "@src/pages/WellsPage";
 import { UsersPage } from "@src/pages/UsersPage";
@@ -10,6 +11,7 @@ import { LoginPage } from "@src/pages/LoginPage";
 import { Layout } from "@components/Layout";
 import { MapPage } from "@src/pages/MapPage";
 import { OrgsPage } from "@src/pages/OrgsPage";
+import { JobsPage } from "@src/pages/JobsPage";
 
 interface Props {}
 // type Children = {
@@ -50,31 +52,39 @@ export const ExchangeRoutes: React.FC<Props> = () => {
             ),
           },
           {
-            path: "users",
+            path: `${ScreenRoute.USERS}`,
             element: (
-              <ProtectedRoute>
+              <ProtectedRouteAdmin>
                 <UsersPage />
-              </ProtectedRoute>
+              </ProtectedRouteAdmin>
             ),
           },
           {
-            path: "wells",
+            path: `${ScreenRoute.WELLS}`,
             element: (
-              <ProtectedRoute>
+              <ProtectedRouteAdmin>
                 <WellsPage />
-              </ProtectedRoute>
+              </ProtectedRouteAdmin>
             ),
           },
           {
-            path: "organizations",
+            path: `${ScreenRoute.ORGS}`,
             element: (
-              <ProtectedRoute>
+              <ProtectedRouteAdmin>
                 <OrgsPage />
-              </ProtectedRoute>
+              </ProtectedRouteAdmin>
             ),
           },
           {
-            path: "map",
+            path: `${ScreenRoute.POSTS}`,
+            element: (
+              <ProtectedRouteAdmin>
+                <JobsPage />
+              </ProtectedRouteAdmin>
+            ),
+          },
+          {
+            path: `${ScreenRoute.MAP}`,
             element: (
               <ProtectedRoute>
                 <MapPage />

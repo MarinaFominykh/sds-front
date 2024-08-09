@@ -20,26 +20,40 @@ interface Props {
   handleClickMenuButton: (event: MouseEvent<HTMLButtonElement>) => void;
   onCloseMenu: () => void;
   isOpenMenu: boolean;
+  isAdmin: boolean;
 }
 export const AboutDevPanelView = (props: Props) => {
-  const { device, location, handleClickMenuButton, isOpenMenu, ...other } =
-    props;
+  const {
+    device,
+    location,
+    handleClickMenuButton,
+    isOpenMenu,
+    isAdmin,
+    ...other
+  } = props;
   const cx = useStyles(styles);
 
   return (
     <div className={cx("container")}>
       <div className={cx("fields-container")}>
-        <div className={cx("head")}>
-          <IconButton
-            onClick={handleClickMenuButton}
-            aria-controls={isOpenMenu ? "editDeviceMenu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={isOpenMenu ? "true" : undefined}
-          >
-            <MoreVertIcon />
-          </IconButton>
-          <EditDeviceMenu {...other} isOpenMenu={isOpenMenu} device={device} />
-        </div>
+        {isAdmin && (
+          <div className={cx("head")}>
+            <IconButton
+              onClick={handleClickMenuButton}
+              aria-controls={isOpenMenu ? "editDeviceMenu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={isOpenMenu ? "true" : undefined}
+            >
+              <MoreVertIcon />
+            </IconButton>
+            <EditDeviceMenu
+              {...other}
+              isOpenMenu={isOpenMenu}
+              device={device}
+            />
+          </div>
+        )}
+
         <fieldset className={cx("fields-full")}>
           <InputText
             label="Место расположения"

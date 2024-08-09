@@ -1,0 +1,1 @@
+export { ProtectedRouteAdmin } from "./ProtectedRouteAdmin";

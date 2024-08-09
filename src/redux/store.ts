@@ -16,6 +16,7 @@ import locationSlice from "./reducers/locationSlice";
 import devSlice from "./reducers/devSlice";
 import wellSlice from "./reducers/wellSlice";
 import orgSlise from "./reducers/orgSlise";
+import jobSlice from "./reducers/jobSlice";
 
 const store = configureStore({
   reducer: {
@@ -25,6 +26,7 @@ const store = configureStore({
     devSlice,
     wellSlice,
     orgSlise,
+    jobSlice,
     [mainApi.reducerPath]: mainApi.reducer,
     [userAPI.reducerPath]: userAPI.reducer,
     [orgAPI.reducerPath]: orgAPI.reducer,

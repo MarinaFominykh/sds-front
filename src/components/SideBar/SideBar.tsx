@@ -12,7 +12,6 @@ import {
 
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "@hooks/redux";
-
 import { useStyles } from "@hooks/useStyles";
 import { setVariant } from "@src/redux/reducers/ModalSlice";
 import styles from "./styles.module.scss";

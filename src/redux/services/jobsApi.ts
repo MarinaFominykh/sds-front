@@ -1,7 +1,7 @@
 import { FormValues } from "@hooks/useFormWithValidation";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ECOMMAND } from "@src/types/ECommand";
-import { IJob } from "@src/types/IJob";
+import { IResponse } from "@src/types/IResponse";
 import { createBodyQuery } from "@src/utils/functions";
 
 export const jobAPI = createApi({
@@ -19,7 +19,7 @@ export const jobAPI = createApi({
       }),
       providesTags: () => ["Job"],
     }),
-    createJob: build.mutation<IJob, FormValues>({
+    createJob: build.mutation<IResponse, FormValues>({
       query: (args) => ({
         url: "/api",
         method: "POST",
@@ -27,7 +27,16 @@ export const jobAPI = createApi({
       }),
       invalidatesTags: () => ["Job"],
     }),
+    editJob: build.mutation<IResponse, FormValues>({
+      query: (args) => ({
+        url: "/api",
+        method: "POST",
+        body: createBodyQuery(ECOMMAND.CHAHGEJOB, args),
+      }),
+      invalidatesTags: () => ["Job"],
+    }),
   }),
 });
 
-export const { useGetAllJobsQuery, useCreateJobMutation } = jobAPI;
+export const { useGetAllJobsQuery, useCreateJobMutation, useEditJobMutation } =
+  jobAPI;

@@ -37,7 +37,12 @@ export const Select: FC<Props> = ({
 }) => {
   const cx = useStyles(styles);
   return (
-    <FormControl error={error} size="small" className={cx("select_control")}>
+    <FormControl
+      error={error}
+      size="small"
+      className={cx("select_control")}
+      sx={{ width: "100%" }}
+    >
       <InputLabel className={cx("label")}>{label}</InputLabel>
       <MuiSelect
         value={value}

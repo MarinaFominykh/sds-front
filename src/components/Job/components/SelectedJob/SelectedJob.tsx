@@ -5,12 +5,12 @@ import { useModal } from "@hooks/useModal";
 import { Modal } from "@components/_shared/Modal";
 import { setVariant } from "@src/redux/reducers/ModalSlice";
 import { eVariantModal } from "@src/types/EvariantModal";
-import { SelectedWellView } from "./SelectedWellView";
+import { SelectedJobView } from "./SelectedJobView";
 
-export const SelectedWell = () => {
+export const SelectedJob = () => {
   const dispatch = useAppDispatch();
-  const { selectedWell, isSelectedWell } = useAppSelector(
-    (state) => state.wellSlice
+  const { selectedJob, isSelectedJob } = useAppSelector(
+    (state) => state.jobSlice
   );
   const [open, openModal, closeModal] = useModal();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -21,7 +21,7 @@ export const SelectedWell = () => {
   const closeMenu = () => {
     setAnchorEl(null);
   };
-  const handleOpenModalEditWell = (variant: eVariantModal, title: string) => {
+  const handleOpenModalEditJob = (variant: eVariantModal, title: string) => {
     closeMenu();
     dispatch(
       setVariant({
@@ -31,11 +31,12 @@ export const SelectedWell = () => {
     );
     openModal();
   };
-  const handleOpenModalNewWell = () => {
+
+  const handleOpenModalNewJob = () => {
     dispatch(
       setVariant({
-        title: "Добавить скважину",
-        variant: eVariantModal.newWell,
+        title: "Добавить должность",
+        variant: eVariantModal.newJob,
       })
     );
     openModal();
@@ -43,17 +44,17 @@ export const SelectedWell = () => {
 
   return (
     <>
-      {selectedWell && isSelectedWell && (
-        <SelectedWellView
-          well={selectedWell}
+      {selectedJob && isSelectedJob && (
+        <SelectedJobView
+          job={selectedJob}
           anchorEl={anchorEl}
-          handleOpenModal={handleOpenModalEditWell}
+          handleOpenModal={handleOpenModalEditJob}
           handleClickMenuButton={handleClickMenuButton}
           closeMenu={closeMenu}
           isOpenMenu={isOpenMenu}
         />
       )}
-      <BigButton handleClick={handleOpenModalNewWell}>
+      <BigButton handleClick={handleOpenModalNewJob}>
         Добавить скважину
       </BigButton>
       <Modal open={open} handleClose={closeModal} />
